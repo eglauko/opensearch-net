@@ -26,15 +26,26 @@
 */
 
 using System;
-using OpenSearch.Net;
 using FluentAssertions;
-using Osc;
+using OpenSearch.Net;
+using OpenSearch.OpenSearch.Xunit.XunitPlumbing;
+using OpenSearch.Client;
 using Tests.Core.ManagedOpenSearch.Clusters;
 using Tests.Framework.EndpointTests;
 using Tests.Framework.EndpointTests.TestState;
 
 namespace Tests.Cat.CatHealth
 {
+	// OpenDistro v.1.13.0 with security plugin activated gets exception when `_cat/health` server API called and returns it to a user:
+	//	"type" : "security_exception",
+	//	"reason" : "Unexpected exception cluster:monitor/health",
+	//	"stack_trace" : "ElasticsearchSecurityException[Unexpected exception cluster:monitor/health]
+	//		at com.amazon.opendistroforelasticsearch.security.filter.OpenDistroSecurityFilter.apply0(OpenDistroSecurityFilter.java:361)
+	//		....
+	// See forum threads about this bug: https://discuss.opendistrocommunity.dev/t/analyze-api-error/5640,
+	//									 https://discuss.opendistrocommunity.dev/t/exception-while-calling-cluster-health/6129
+	// Fixed in OpenDistro 1.13.1.
+	[SkipVersion("1.13.0", "OpenDistro 1.13.0 with security malfunction with these API's. See code comments for detailed description.")]
 	public class CatHealthApiTests
 		: ApiIntegrationTestBase<ReadOnlyCluster, CatResponse<CatHealthRecord>, ICatHealthRequest, CatHealthDescriptor, CatHealthRequest>
 	{
@@ -56,6 +67,7 @@ namespace Tests.Cat.CatHealth
 			response.Records.Should().NotBeEmpty().And.Contain(a => !string.IsNullOrEmpty(a.Status));
 	}
 
+	[SkipVersion("1.13.0", "OpenDistro 1.13.0 with security malfunction with these API's. See code comments for detailed description.")]
 	public class CatHealthNoTimestampApiTests
 		: ApiIntegrationTestBase<ReadOnlyCluster, CatResponse<CatHealthRecord>, ICatHealthRequest, CatHealthDescriptor, CatHealthRequest>
 	{

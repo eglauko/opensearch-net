@@ -27,13 +27,15 @@
 
 using System;
 using OpenSearch.Net;
-using Osc;
+using OpenSearch.OpenSearch.Xunit.XunitPlumbing;
+using OpenSearch.Client;
 using Tests.Core.ManagedOpenSearch.Clusters;
 using Tests.Framework.EndpointTests;
 using Tests.Framework.EndpointTests.TestState;
 
 namespace Tests.Indices.AliasManagement.DeleteAlias
 {
+	[SkipVersion(">=1.0.0", "Disabled due to https://github.com/opensearch-project/security/issues/1732. Affects OpenDistro as well.")]
 	public class DeleteAliasApiTests
 		: ApiIntegrationTestBase<WritableCluster, DeleteAliasResponse, IDeleteAliasRequest, DeleteAliasDescriptor, DeleteAliasRequest>
 	{

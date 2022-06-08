@@ -3,15 +3,15 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup Condition="'$(TestPackageVersion)'!=''">
-    <PackageReference Include="OSC" Version="$(TestPackageVersion)" />
+    <PackageReference Include="OpenSearch.Client" Version="$(TestPackageVersion)" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
   <ItemGroup Condition="'$(TestPackageVersion)'==''">
-    <ProjectReference Include="$(SolutionRoot)\src\Osc\Osc.csproj" />
+    <ProjectReference Include="$(SolutionRoot)\src\OpenSearch.Client\OpenSearch.Client.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Bogus" Version="22.1.2" />
-    <PackageReference Include="OpenSearch.OpenSearch.Managed" Version="0.1.0-canary.0.34" />
+    <PackageReference Include="OpenSearch.OpenSearch.Managed" Version="0.1.0-canary.0.276" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <ProjectReference Include="$(SolutionRoot)\tests\Tests.Configuration\Tests.Configuration.csproj" />
   </ItemGroup>
