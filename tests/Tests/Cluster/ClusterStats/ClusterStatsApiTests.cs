@@ -132,12 +132,14 @@ namespace Tests.Cluster.ClusterStats
 
 			indices.Segments.Should().NotBeNull();
 			indices.Segments.Count.Should().BeGreaterThan(0);
-
-			indices.Segments.DocValuesMemoryInBytes.Should().BeGreaterThan(0);
-			indices.Segments.MemoryInBytes.Should().BeGreaterThan(0);
-			indices.Segments.NormsMemoryInBytes.Should().BeGreaterThan(0);
-			indices.Segments.StoredFieldsMemoryInBytes.Should().BeGreaterThan(0);
-			indices.Segments.TermsMemoryInBytes.Should().BeGreaterThan(0);
+			if (Cluster.ClusterConfiguration.Version < "2.0.0")
+			{
+				indices.Segments.DocValuesMemoryInBytes.Should().BeGreaterThan(0);
+				indices.Segments.MemoryInBytes.Should().BeGreaterThan(0);
+				indices.Segments.NormsMemoryInBytes.Should().BeGreaterThan(0);
+				indices.Segments.StoredFieldsMemoryInBytes.Should().BeGreaterThan(0);
+				indices.Segments.TermsMemoryInBytes.Should().BeGreaterThan(0);
+			}
 
 			indices.Shards.Should().NotBeNull();
 			indices.Shards.Primaries.Should().BeGreaterThan(0);
