@@ -33,27 +33,27 @@ using Tests.Framework.EndpointTests;
 using Tests.Framework.EndpointTests.TestState;
 using OpenSearch.OpenSearch.Xunit.XunitPlumbing;
 
-namespace Tests.Cat.CatMaster
+namespace Tests.Cat.CatClusterManager
 {
-	[SkipVersion(">=2.0.0", "CatMaster API was renamed to CatClusterManager in 2.0.0 release")]
-	public class CatMasterApiTests
-		: ApiIntegrationTestBase<ReadOnlyCluster, CatResponse<CatMasterRecord>, ICatMasterRequest, CatMasterDescriptor, CatMasterRequest>
+	[SkipVersion("<2.0.0", "CatClusterManager API was introdused in 2.0.0 release instead of CatMaster")]
+	public class CatClusterManagerApiTests
+		: ApiIntegrationTestBase<ReadOnlyCluster, CatResponse<CatClusterManagerRecord>, ICatClusterManagerRequest, CatClusterManagerDescriptor, CatClusterManagerRequest>
 	{
-		public CatMasterApiTests(ReadOnlyCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public CatClusterManagerApiTests(ReadOnlyCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.GET;
-		protected override string UrlPath => "/_cat/master";
+		protected override string UrlPath => "/_cat/cluster_manager";
 
 		protected override LazyResponses ClientUsage() => Calls(
-			(client, f) => client.Cat.Master(),
-			(client, f) => client.Cat.MasterAsync(),
-			(client, r) => client.Cat.Master(r),
-			(client, r) => client.Cat.MasterAsync(r)
+			(client, f) => client.Cat.ClusterManager(),
+			(client, f) => client.Cat.ClusterManagerAsync(),
+			(client, r) => client.Cat.ClusterManager(r),
+			(client, r) => client.Cat.ClusterManagerAsync(r)
 		);
 
-		protected override void ExpectResponse(CatResponse<CatMasterRecord> response) =>
+		protected override void ExpectResponse(CatResponse<CatClusterManagerRecord> response) =>
 			response.Records.Should().NotBeEmpty().And.Contain(a => !string.IsNullOrEmpty(a.Node));
 	}
 }

@@ -25,54 +25,20 @@
 *  under the License.
 */
 
-using System.Runtime.Serialization;
-using OpenSearch.Net;
+using System.Threading.Tasks;
+using OpenSearch.OpenSearch.Xunit.XunitPlumbing;
+using OpenSearch.Client;
+using Tests.Framework.EndpointTests;
+using static Tests.Framework.EndpointTests.UrlTester;
 
-namespace OpenSearch.Client
+namespace Tests.Cat.CatMaster
 {
-	[StringEnum]
-	public enum NodeRole
+	public class CatClusterManagerUrlTests : UrlTestsBase
 	{
-		[EnumMember(Value = "master")]
-		Master,
-
-		[EnumMember(Value = "cluster_manager")]
-		ClusterManager,
-
-		[EnumMember(Value = "data")]
-		Data,
-
-		[EnumMember(Value = "data_cold")]
-		DataCold,
-
-		[EnumMember(Value = "data_frozen")]
-		DataFrozen,
-
-		[EnumMember(Value = "data_content")]
-		DataContent,
-
-		[EnumMember(Value = "data_hot")]
-		DataHot,
-
-		[EnumMember(Value = "data_warm")]
-		DataWarm,
-
-		[EnumMember(Value = "client")]
-		Client,
-
-		[EnumMember(Value = "ingest")]
-		Ingest,
-
-		[EnumMember(Value = "voting_only")]
-		VotingOnly,
-
-		[EnumMember(Value = "transform")]
-		Transform,
-
-		[EnumMember(Value = "remote_cluster_client")]
-		RemoteClusterClient,
-
-		[EnumMember(Value = "coordinating_only")]
-		CoordinatingOnly,
+		[U] public override async Task Urls() => await GET("/_cat/cluster_manager")
+			.Fluent(c => c.Cat.ClusterManager())
+			.Request(c => c.Cat.ClusterManager(new CatClusterManagerRequest()))
+			.FluentAsync(c => c.Cat.ClusterManagerAsync())
+			.RequestAsync(c => c.Cat.ClusterManagerAsync(new CatClusterManagerRequest()));
 	}
 }

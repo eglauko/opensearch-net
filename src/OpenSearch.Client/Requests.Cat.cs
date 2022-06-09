@@ -589,7 +589,10 @@ namespace OpenSearch.Client
 	{
 	}
 
-	///<summary>Request for Master <para>https://opensearch.org/docs/latest/opensearch/rest-api/cat/cat-master/</para></summary>
+	/// <summary>Request for Master
+	/// <para>https://opensearch.org/docs/latest/opensearch/rest-api/cat/cat-master/</para>
+	/// Replaced by <see cref="CatClusterManagerRequest"/> in OpenSearch 2.0
+	/// </summary>
 	public partial class CatMasterRequest : PlainRequestBase<CatMasterRequestParameters>, ICatMasterRequest
 	{
 		protected ICatMasterRequest Self => this;
@@ -633,6 +636,74 @@ namespace OpenSearch.Client
 		{
 			get => Q<Time>("master_timeout");
 			set => Q("master_timeout", value);
+		}
+
+		///<summary>Comma-separated list of column names or column aliases to sort by</summary>
+		public string[] SortByColumns
+		{
+			get => Q<string[]>("s");
+			set => Q("s", value);
+		}
+
+		///<summary>Verbose mode. Display column headers</summary>
+		public bool? Verbose
+		{
+			get => Q<bool? >("v");
+			set => Q("v", value);
+		}
+	}
+
+	[InterfaceDataContract]
+	public partial interface ICatClusterManagerRequest : IRequest<CatClusterManagerRequestParameters>
+	{
+	}
+
+	/// <summary>Request for ClusterManager
+	/// <para>https://opensearch.org/docs/latest/opensearch/rest-api/cat/cat-cluster_manager/</para>
+	/// </summary>
+	public partial class CatClusterManagerRequest : PlainRequestBase<CatClusterManagerRequestParameters>, ICatClusterManagerRequest
+	{
+		protected ICatClusterManagerRequest Self => this;
+		internal override ApiUrls ApiUrls => ApiUrlsLookups.CatClusterManager;
+		// values part of the url path
+		// Request parameters
+		///<summary>a short version of the Accept header, e.g. json, yaml</summary>
+		public string Format
+		{
+			get => Q<string>("format");
+			set
+			{
+				Q("format", value);
+				SetAcceptHeader(value);
+			}
+		}
+
+		///<summary>Comma-separated list of column names to display</summary>
+		public string[] Headers
+		{
+			get => Q<string[]>("h");
+			set => Q("h", value);
+		}
+
+		///<summary>Return help information</summary>
+		public bool? Help
+		{
+			get => Q<bool? >("help");
+			set => Q("help", value);
+		}
+
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
+		public bool? Local
+		{
+			get => Q<bool? >("local");
+			set => Q("local", value);
+		}
+
+		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		public Time ClusterManagerTimeout
+		{
+			get => Q<Time>("cluster_manager_timeout");
+			set => Q("cluster_manager_timeout", value);
 		}
 
 		///<summary>Comma-separated list of column names or column aliases to sort by</summary>

@@ -25,54 +25,12 @@
 *  under the License.
 */
 
-using System.Runtime.Serialization;
-using OpenSearch.Net;
-
 namespace OpenSearch.Client
 {
-	[StringEnum]
-	public enum NodeRole
-	{
-		[EnumMember(Value = "master")]
-		Master,
+	[MapsApi("cat.cluster_manager.json")]
+	public partial interface ICatClusterManagerRequest { }
 
-		[EnumMember(Value = "cluster_manager")]
-		ClusterManager,
+	public partial class CatClusterManagerRequest { }
 
-		[EnumMember(Value = "data")]
-		Data,
-
-		[EnumMember(Value = "data_cold")]
-		DataCold,
-
-		[EnumMember(Value = "data_frozen")]
-		DataFrozen,
-
-		[EnumMember(Value = "data_content")]
-		DataContent,
-
-		[EnumMember(Value = "data_hot")]
-		DataHot,
-
-		[EnumMember(Value = "data_warm")]
-		DataWarm,
-
-		[EnumMember(Value = "client")]
-		Client,
-
-		[EnumMember(Value = "ingest")]
-		Ingest,
-
-		[EnumMember(Value = "voting_only")]
-		VotingOnly,
-
-		[EnumMember(Value = "transform")]
-		Transform,
-
-		[EnumMember(Value = "remote_cluster_client")]
-		RemoteClusterClient,
-
-		[EnumMember(Value = "coordinating_only")]
-		CoordinatingOnly,
-	}
+	public partial class CatClusterManagerDescriptor { }
 }

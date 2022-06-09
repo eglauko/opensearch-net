@@ -286,7 +286,11 @@ namespace OpenSearch.Client
 		public CatIndicesDescriptor Verbose(bool? verbose = true) => Qs("v", verbose);
 	}
 
-	///<summary>Descriptor for Master <para>https://opensearch.org/docs/latest/opensearch/rest-api/cat/cat-master/</para></summary>
+	/// <summary>
+	/// Descriptor for Master
+	/// <para>https://opensearch.org/docs/latest/opensearch/rest-api/cat/cat-master/</para>
+	/// Replaced by <see cref="CatClusterManagerDescriptor"/> in OpenSearch 2.0
+	/// </summary>
 	public partial class CatMasterDescriptor : RequestDescriptorBase<CatMasterDescriptor, CatMasterRequestParameters, ICatMasterRequest>, ICatMasterRequest
 	{
 		internal override ApiUrls ApiUrls => ApiUrlsLookups.CatMaster;
@@ -306,6 +310,31 @@ namespace OpenSearch.Client
 		public CatMasterDescriptor SortByColumns(params string[] sortbycolumns) => Qs("s", sortbycolumns);
 		///<summary>Verbose mode. Display column headers</summary>
 		public CatMasterDescriptor Verbose(bool? verbose = true) => Qs("v", verbose);
+	}
+
+	/// <summary>
+	/// Descriptor for cluster_manager
+	/// <para>https://opensearch.org/docs/latest/opensearch/rest-api/cat/cat-cluster_manager/</para>
+	/// </summary>
+	public partial class CatClusterManagerDescriptor : RequestDescriptorBase<CatClusterManagerDescriptor, CatClusterManagerRequestParameters, ICatClusterManagerRequest>, ICatClusterManagerRequest
+	{
+		internal override ApiUrls ApiUrls => ApiUrlsLookups.CatClusterManager;
+		// values part of the url path
+		// Request parameters
+		///<summary>a short version of the Accept header, e.g. json, yaml</summary>
+		public CatClusterManagerDescriptor Format(string format) => Qs("format", format);
+		///<summary>Comma-separated list of column names to display</summary>
+		public CatClusterManagerDescriptor Headers(params string[] headers) => Qs("h", headers);
+		///<summary>Return help information</summary>
+		public CatClusterManagerDescriptor Help(bool? help = true) => Qs("help", help);
+		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		public CatClusterManagerDescriptor Local(bool? local = true) => Qs("local", local);
+		///<summary>Explicit operation timeout for connection to master node</summary>
+		public CatClusterManagerDescriptor ClusterManagerTimeout(Time mastertimeout) => Qs("cluster_manager_timeout", mastertimeout);
+		///<summary>Comma-separated list of column names or column aliases to sort by</summary>
+		public CatClusterManagerDescriptor SortByColumns(params string[] sortbycolumns) => Qs("s", sortbycolumns);
+		///<summary>Verbose mode. Display column headers</summary>
+		public CatClusterManagerDescriptor Verbose(bool? verbose = true) => Qs("v", verbose);
 	}
 
 	///<summary>Descriptor for NodeAttributes <para>https://opensearch.org/docs/latest/opensearch/rest-api/cat/cat-nodeattrs/</para></summary>

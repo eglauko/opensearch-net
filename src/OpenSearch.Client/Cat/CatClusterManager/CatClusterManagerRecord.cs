@@ -26,53 +26,19 @@
 */
 
 using System.Runtime.Serialization;
-using OpenSearch.Net;
 
 namespace OpenSearch.Client
 {
-	[StringEnum]
-	public enum NodeRole
+	[DataContract]
+	public class CatClusterManagerRecord : ICatRecord
 	{
-		[EnumMember(Value = "master")]
-		Master,
+		[DataMember(Name ="id")]
+		public string Id { get; set; }
 
-		[EnumMember(Value = "cluster_manager")]
-		ClusterManager,
+		[DataMember(Name ="ip")]
+		public string Ip { get; set; }
 
-		[EnumMember(Value = "data")]
-		Data,
-
-		[EnumMember(Value = "data_cold")]
-		DataCold,
-
-		[EnumMember(Value = "data_frozen")]
-		DataFrozen,
-
-		[EnumMember(Value = "data_content")]
-		DataContent,
-
-		[EnumMember(Value = "data_hot")]
-		DataHot,
-
-		[EnumMember(Value = "data_warm")]
-		DataWarm,
-
-		[EnumMember(Value = "client")]
-		Client,
-
-		[EnumMember(Value = "ingest")]
-		Ingest,
-
-		[EnumMember(Value = "voting_only")]
-		VotingOnly,
-
-		[EnumMember(Value = "transform")]
-		Transform,
-
-		[EnumMember(Value = "remote_cluster_client")]
-		RemoteClusterClient,
-
-		[EnumMember(Value = "coordinating_only")]
-		CoordinatingOnly,
+		[DataMember(Name ="node")]
+		public string Node { get; set; }
 	}
 }
