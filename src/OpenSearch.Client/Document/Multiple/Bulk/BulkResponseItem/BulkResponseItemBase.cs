@@ -103,7 +103,7 @@ namespace OpenSearch.Client
 		{
 			get
 			{
-				if (Error != null || Type.IsNullOrEmpty()) return false;
+				if (Error != null) return false;
 
 				switch (Operation.ToLowerInvariant())
 				{
