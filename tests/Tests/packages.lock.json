@@ -287,36 +287,36 @@
       },
       "OpenSearch.OpenSearch.Ephemeral": {
         "type": "Transitive",
-        "resolved": "0.1.0-canary.0.276",
-        "contentHash": "Ws9CcKvUOsFM7jMwK9w7px5gdSylPMBxfxuh2tXNDfmfHMNnG1eFPAbUj1UZwnn+H5kwHowknb1LgvLVBrqoag==",
+        "resolved": "0.1.0-canary.0.277",
+        "contentHash": "76uDTVvMlMqIw47JMlnMXAYoYjMocRgirue/XJP+YQ2p/UGtWD9m8OTvhwCKWHtEO5pZG8+YqAzjEiUYLbKZwg==",
         "dependencies": {
-          "OpenSearch.OpenSearch.Managed": "0.1.0-canary.0.276",
+          "OpenSearch.OpenSearch.Managed": "0.1.0-canary.0.277",
           "SharpZipLib.NETStandard": "1.0.7"
         }
       },
       "OpenSearch.OpenSearch.Managed": {
         "type": "Transitive",
-        "resolved": "0.1.0-canary.0.276",
-        "contentHash": "hnHFIbPj61dcxhgmfs5MszOTgeQHu33do569UNOcpuDMBxSue7rZWcSrkaa65+Ya86Zq9a8UUSMFg0vRhkgggQ==",
+        "resolved": "0.1.0-canary.0.277",
+        "contentHash": "d2mEKkGQXXXWTvqqCO0eqwLbFBzlKvh1zdHtbn5Feg1rNX+6gpfMwZUkXCyQjRTDtTOYWz5MyCO42KaYFli98w==",
         "dependencies": {
-          "OpenSearch.Stack.ArtifactsApi": "0.1.0-canary.0.276",
+          "OpenSearch.Stack.ArtifactsApi": "0.1.0-canary.0.277",
           "Proc": "0.6.1",
           "System.Net.Http": "4.3.1"
         }
       },
       "OpenSearch.OpenSearch.Xunit": {
         "type": "Transitive",
-        "resolved": "0.1.0-canary.0.276",
-        "contentHash": "1aQCdd2GmlKonog5nLXyDNL0obTtGRSlb2UW6NE6nHEsp4G0yQo9GbrY647lFpLH9MCuzeL6jkXjervzfZL1cQ==",
+        "resolved": "0.1.0-canary.0.277",
+        "contentHash": "ZI7vWwWba6OdFA4KhrF8Nt0n45E+eSa/6OQx+WJ2lQqZ0ccmyu7gfQ1S8rvAImJ7PofqII5wWwtX+TGO5Im3wA==",
         "dependencies": {
-          "OpenSearch.OpenSearch.Ephemeral": "0.1.0-canary.0.276",
+          "OpenSearch.OpenSearch.Ephemeral": "0.1.0-canary.0.277",
           "xunit": "2.3.1"
         }
       },
       "OpenSearch.Stack.ArtifactsApi": {
         "type": "Transitive",
-        "resolved": "0.1.0-canary.0.276",
-        "contentHash": "YpoxP/GJ8RFPdedJ9O3Yv8EQNSaGPOK1skSUY043zcRDLwU6vbhZCAXzFc5lvbao22JXWFKVYan05voGU5o/jA==",
+        "resolved": "0.1.0-canary.0.277",
+        "contentHash": "xsPBSZyg5QDV4+y9dBFlds0xHmG4GBv+jZQ88r/4aRqIj0qh5eJTNplz3EwZZyFW7Q6uvxrZR/oQ5fnugWaBPg==",
         "dependencies": {
           "SemanticVersioning": "0.8.0",
           "System.Text.Json": "4.6.0"
@@ -1350,7 +1350,7 @@
       "tests.configuration": {
         "type": "Project",
         "dependencies": {
-          "OpenSearch.OpenSearch.Managed": "0.1.0-canary.0.276"
+          "OpenSearch.OpenSearch.Managed": "0.1.0-canary.0.277"
         }
       },
       "tests.core": {
@@ -1362,7 +1362,7 @@
           "Microsoft.NET.Test.Sdk": "16.5.0",
           "Nullean.VsTest.Pretty.TestLogger": "0.3.0",
           "OpenSearch.Client.JsonNetSerializer": "1.0.0",
-          "OpenSearch.OpenSearch.Xunit": "0.1.0-canary.0.276",
+          "OpenSearch.OpenSearch.Xunit": "0.1.0-canary.0.277",
           "Proc": "0.6.1",
           "Tests.Domain": "1.0.0",
           "xunit": "2.3.1"
@@ -1374,7 +1374,7 @@
           "Bogus": "22.1.2",
           "Newtonsoft.Json": "12.0.1",
           "OpenSearch.Client": "1.0.0",
-          "OpenSearch.OpenSearch.Managed": "0.1.0-canary.0.276",
+          "OpenSearch.OpenSearch.Managed": "0.1.0-canary.0.277",
           "Tests.Configuration": "1.0.0"
         }
       }
