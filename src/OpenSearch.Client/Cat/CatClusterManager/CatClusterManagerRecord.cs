@@ -25,33 +25,20 @@
 *  under the License.
 */
 
-using OpenSearch.OpenSearch.Xunit.XunitPlumbing;
-using FluentAssertions;
-using OpenSearch.Client;
-using Tests.Core.Extensions;
-using Tests.Core.ManagedOpenSearch.Clusters;
-using Tests.Domain;
+using System.Runtime.Serialization;
 
-namespace Tests.Reproduce
+namespace OpenSearch.Client
 {
-	public class GithubIssue2306 : IClusterFixture<ReadOnlyCluster>
+	[DataContract]
+	public class CatClusterManagerRecord : ICatRecord
 	{
-		private readonly ReadOnlyCluster _cluster;
+		[DataMember(Name ="id")]
+		public string Id { get; set; }
 
-		public GithubIssue2306(ReadOnlyCluster cluster) => _cluster = cluster;
+		[DataMember(Name ="ip")]
+		public string Ip { get; set; }
 
-		[I]
-		public void DeleteNonExistentDocumentReturnsNotFound()
-		{
-			var client = _cluster.Client;
-			var response = client.Delete<Project>("non-existent-id", d => d.Routing("routing"));
-
-			response.ShouldNotBeValid();
-			response.Result.Should().Be(Result.NotFound);
-			response.Index.Should().Be("project");
-			if (_cluster.ClusterConfiguration.Version < "2.0.0")
-				response.Type.Should().Be("doc");
-			response.Id.Should().Be("non-existent-id");
-		}
+		[DataMember(Name ="node")]
+		public string Node { get; set; }
 	}
 }

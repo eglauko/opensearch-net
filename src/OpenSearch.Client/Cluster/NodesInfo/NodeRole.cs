@@ -36,6 +36,9 @@ namespace OpenSearch.Client
 		[EnumMember(Value = "master")]
 		Master,
 
+		[EnumMember(Value = "cluster_manager")]
+		ClusterManager,
+
 		[EnumMember(Value = "data")]
 		Data,
 

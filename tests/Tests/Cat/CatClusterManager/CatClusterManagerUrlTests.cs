@@ -25,33 +25,20 @@
 *  under the License.
 */
 
+using System.Threading.Tasks;
 using OpenSearch.OpenSearch.Xunit.XunitPlumbing;
-using FluentAssertions;
 using OpenSearch.Client;
-using Tests.Core.Extensions;
-using Tests.Core.ManagedOpenSearch.Clusters;
-using Tests.Domain;
+using Tests.Framework.EndpointTests;
+using static Tests.Framework.EndpointTests.UrlTester;
 
-namespace Tests.Reproduce
+namespace Tests.Cat.CatMaster
 {
-	public class GithubIssue2306 : IClusterFixture<ReadOnlyCluster>
+	public class CatClusterManagerUrlTests : UrlTestsBase
 	{
-		private readonly ReadOnlyCluster _cluster;
-
-		public GithubIssue2306(ReadOnlyCluster cluster) => _cluster = cluster;
-
-		[I]
-		public void DeleteNonExistentDocumentReturnsNotFound()
-		{
-			var client = _cluster.Client;
-			var response = client.Delete<Project>("non-existent-id", d => d.Routing("routing"));
-
-			response.ShouldNotBeValid();
-			response.Result.Should().Be(Result.NotFound);
-			response.Index.Should().Be("project");
-			if (_cluster.ClusterConfiguration.Version < "2.0.0")
-				response.Type.Should().Be("doc");
-			response.Id.Should().Be("non-existent-id");
-		}
+		[U] public override async Task Urls() => await GET("/_cat/cluster_manager")
+			.Fluent(c => c.Cat.ClusterManager())
+			.Request(c => c.Cat.ClusterManager(new CatClusterManagerRequest()))
+			.FluentAsync(c => c.Cat.ClusterManagerAsync())
+			.RequestAsync(c => c.Cat.ClusterManagerAsync(new CatClusterManagerRequest()));
 	}
 }

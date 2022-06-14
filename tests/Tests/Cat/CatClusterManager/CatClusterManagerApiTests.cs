@@ -25,46 +25,35 @@
 *  under the License.
 */
 
-using System;
 using OpenSearch.Net;
+using FluentAssertions;
 using OpenSearch.Client;
 using Tests.Core.ManagedOpenSearch.Clusters;
-using Tests.Domain;
 using Tests.Framework.EndpointTests;
 using Tests.Framework.EndpointTests.TestState;
-using static OpenSearch.Client.Infer;
 using OpenSearch.OpenSearch.Xunit.XunitPlumbing;
 
-namespace Tests.Indices.IndexManagement.TypesExists
+namespace Tests.Cat.CatClusterManager
 {
-	[SkipVersion(">=2.0.0", "Type Mapping API was removed from OpenSearch 2.0")]
-	public class TypeExistsApiTests
-		: ApiIntegrationTestBase<ReadOnlyCluster, ExistsResponse, ITypeExistsRequest, TypeExistsDescriptor, TypeExistsRequest>
+	[SkipVersion("<2.0.0", "CatClusterManager API was introdused in 2.0.0 release instead of CatMaster")]
+	public class CatClusterManagerApiTests
+		: ApiIntegrationTestBase<ReadOnlyCluster, CatResponse<CatClusterManagerRecord>, ICatClusterManagerRequest, CatClusterManagerDescriptor, CatClusterManagerRequest>
 	{
-		public TypeExistsApiTests(ReadOnlyCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public CatClusterManagerApiTests(ReadOnlyCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override bool ExpectIsValid => true;
 		protected override int ExpectStatusCode => 200;
-
-		protected override Func<TypeExistsDescriptor, ITypeExistsRequest> Fluent => d => d
-			.IgnoreUnavailable();
-
-		protected override HttpMethod HttpMethod => HttpMethod.HEAD;
-
-		protected override TypeExistsRequest Initializer => new TypeExistsRequest(Index<Project>(), "_doc")
-		{
-			IgnoreUnavailable = true
-		};
-
-		protected override string UrlPath => $"/project/_mapping/_doc?ignore_unavailable=true";
+		protected override HttpMethod HttpMethod => HttpMethod.GET;
+		protected override string UrlPath => "/_cat/cluster_manager";
 
 		protected override LazyResponses ClientUsage() => Calls(
-			(client, f) => client.Indices.TypeExists(Index<Project>(), "_doc", f),
-			(client, f) => client.Indices.TypeExistsAsync(Index<Project>(), "_doc", f),
-			(client, r) => client.Indices.TypeExists(r),
-			(client, r) => client.Indices.TypeExistsAsync(r)
+			(client, f) => client.Cat.ClusterManager(),
+			(client, f) => client.Cat.ClusterManagerAsync(),
+			(client, r) => client.Cat.ClusterManager(r),
+			(client, r) => client.Cat.ClusterManagerAsync(r)
 		);
 
-		protected override TypeExistsDescriptor NewDescriptor() => new TypeExistsDescriptor(Index<Project>(), "doc");
+		protected override void ExpectResponse(CatResponse<CatClusterManagerRecord> response) =>
+			response.Records.Should().NotBeEmpty().And.Contain(a => !string.IsNullOrEmpty(a.Node));
 	}
 }

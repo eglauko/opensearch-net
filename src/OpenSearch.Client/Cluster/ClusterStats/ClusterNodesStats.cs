@@ -237,6 +237,9 @@ namespace OpenSearch.Client
 	[DataContract]
 	public class ClusterNodeCount
 	{
+		[DataMember(Name = "cluster_manager")]
+		public int ClusterManager { get; internal set; }
+
 		[DataMember(Name = "coordinating_only")]
 		public int CoordinatingOnly { get; internal set; }
 
