@@ -440,8 +440,12 @@ namespace OpenSearch.Client
 		// values part of the url path
 		Id IDeleteScriptRequest.Id => Self.RouteValues.Get<Id>("id");
 		// Request parameters
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection tomaster node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public DeleteScriptDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection tocluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public DeleteScriptDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Explicit operation timeout</summary>
 		public DeleteScriptDescriptor Timeout(Time timeout) => Qs("timeout", timeout);
 	}
@@ -781,8 +785,12 @@ namespace OpenSearch.Client
 		// values part of the url path
 		Id IGetScriptRequest.Id => Self.RouteValues.Get<Id>("id");
 		// Request parameters
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection tomaster node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public GetScriptDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection tocluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public GetScriptDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 	}
 
 	///<summary>Descriptor for Source <para>https://opensearch.org/docs/latest/opensearch/rest-api/document-apis/get-documents/</para></summary>
@@ -1154,8 +1162,12 @@ namespace OpenSearch.Client
 		///<summary>Script context</summary>
 		public PutScriptDescriptor Context(Name context) => Assign(context, (a, v) => a.RouteValues.Optional("context", v));
 		// Request parameters
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection tomaster node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public PutScriptDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection tocluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public PutScriptDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Explicit operation timeout</summary>
 		public PutScriptDescriptor Timeout(Time timeout) => Qs("timeout", timeout);
 	}

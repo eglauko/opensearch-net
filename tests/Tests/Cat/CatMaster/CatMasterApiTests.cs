@@ -36,6 +36,7 @@ using OpenSearch.OpenSearch.Xunit.XunitPlumbing;
 namespace Tests.Cat.CatMaster
 {
 	[SkipVersion(">=2.0.0", "CatMaster API was renamed to CatClusterManager in 2.0.0 release")]
+	// TODO
 	public class CatMasterApiTests
 		: ApiIntegrationTestBase<ReadOnlyCluster, CatResponse<CatMasterRecord>, ICatMasterRequest, CatMasterDescriptor, CatMasterRequest>
 	{

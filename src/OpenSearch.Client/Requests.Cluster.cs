@@ -131,10 +131,19 @@ namespace OpenSearch.Client
 		}
 
 		///<summary>Explicit operation timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public Time MasterTimeout
 		{
 			get => Q<Time>("master_timeout");
 			set => Q("master_timeout", value);
+		}
+
+		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public Time ClusterManagerTimeout
+		{
+			get => Q<Time>("cluster_manager_timeout");
+			set => Q("cluster_manager_timeout", value);
 		}
 
 		///<summary>Explicit operation timeout</summary>
@@ -197,10 +206,19 @@ namespace OpenSearch.Client
 		}
 
 		///<summary>Explicit operation timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public Time MasterTimeout
 		{
 			get => Q<Time>("master_timeout");
 			set => Q("master_timeout", value);
+		}
+
+		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public Time ClusterManagerTimeout
+		{
+			get => Q<Time>("cluster_manager_timeout");
+			set => Q("cluster_manager_timeout", value);
 		}
 
 		///<summary>Explicit operation timeout</summary>
@@ -272,11 +290,20 @@ namespace OpenSearch.Client
 			set => Q("local", value);
 		}
 
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public Time MasterTimeout
 		{
 			get => Q<Time>("master_timeout");
 			set => Q("master_timeout", value);
+		}
+
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public Time ClusterManagerTimeout
+		{
+			get => Q<Time>("cluster_manager_timeout");
+			set => Q("cluster_manager_timeout", value);
 		}
 	}
 
@@ -340,10 +367,19 @@ namespace OpenSearch.Client
 		}
 
 		///<summary>Explicit operation timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public Time MasterTimeout
 		{
 			get => Q<Time>("master_timeout");
 			set => Q("master_timeout", value);
+		}
+
+		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public Time ClusterManagerTimeout
+		{
+			get => Q<Time>("cluster_manager_timeout");
+			set => Q("cluster_manager_timeout", value);
 		}
 
 		///<summary>Explicit operation timeout</summary>
@@ -395,10 +431,19 @@ namespace OpenSearch.Client
 		}
 
 		///<summary>Explicit operation timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public Time MasterTimeout
 		{
 			get => Q<Time>("master_timeout");
 			set => Q("master_timeout", value);
+		}
+
+		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public Time ClusterManagerTimeout
+		{
+			get => Q<Time>("cluster_manager_timeout");
+			set => Q("cluster_manager_timeout", value);
 		}
 
 		///<summary>Limit the information returned to the specified metrics. Defaults to all but metadata</summary>
@@ -506,11 +551,20 @@ namespace OpenSearch.Client
 			set => Q("local", value);
 		}
 
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public Time MasterTimeout
 		{
 			get => Q<Time>("master_timeout");
 			set => Q("master_timeout", value);
+		}
+
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public Time ClusterManagerTimeout
+		{
+			get => Q<Time>("cluster_manager_timeout");
+			set => Q("cluster_manager_timeout", value);
 		}
 
 		///<summary>Wait for the metadata version to be equal or greater than the specified metadata version</summary>

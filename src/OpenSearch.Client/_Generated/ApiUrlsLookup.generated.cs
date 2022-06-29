@@ -47,12 +47,14 @@ namespace OpenSearch.Client
 		internal static ApiUrls NoNamespaceBulk = new ApiUrls(new[]{"_bulk", "{index}/_bulk"});
 		internal static ApiUrls CatAliases = new ApiUrls(new[]{"_cat/aliases", "_cat/aliases/{name}"});
 		internal static ApiUrls CatAllocation = new ApiUrls(new[]{"_cat/allocation", "_cat/allocation/{node_id}"});
-		internal static ApiUrls CatClusterManager = new ApiUrls(new[]{"_cat/cluster_manager"});
 		internal static ApiUrls CatCount = new ApiUrls(new[]{"_cat/count", "_cat/count/{index}"});
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="CatMaster"/></remarks>
+		internal static ApiUrls CatClusterManager = new ApiUrls(new[]{"_cat/cluster_manager"});
 		internal static ApiUrls CatFielddata = new ApiUrls(new[]{"_cat/fielddata", "_cat/fielddata/{fields}"});
 		internal static ApiUrls CatHealth = new ApiUrls(new[]{"_cat/health"});
 		internal static ApiUrls CatHelp = new ApiUrls(new[]{"_cat"});
 		internal static ApiUrls CatIndices = new ApiUrls(new[]{"_cat/indices", "_cat/indices/{index}"});
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="CatClusterManager"/> instead</remarks>
 		internal static ApiUrls CatMaster = new ApiUrls(new[]{"_cat/master"});
 		internal static ApiUrls CatNodeAttributes = new ApiUrls(new[]{"_cat/nodeattrs"});
 		internal static ApiUrls CatNodes = new ApiUrls(new[]{"_cat/nodes"});

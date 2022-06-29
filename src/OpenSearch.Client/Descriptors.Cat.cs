@@ -123,7 +123,11 @@ namespace OpenSearch.Client
 		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
 		public CatAllocationDescriptor Local(bool? local = true) => Qs("local", local);
 		///<summary>Explicit operation timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public CatAllocationDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public CatAllocationDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Comma-separated list of column names or column aliases to sort by</summary>
 		public CatAllocationDescriptor SortByColumns(params string[] sortbycolumns) => Qs("s", sortbycolumns);
 		///<summary>Verbose mode. Display column headers</summary>
@@ -277,7 +281,11 @@ namespace OpenSearch.Client
 		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
 		public CatIndicesDescriptor Local(bool? local = true) => Qs("local", local);
 		///<summary>Explicit operation timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public CatIndicesDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public CatIndicesDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Set to true to return stats only for primary shards</summary>
 		public CatIndicesDescriptor Pri(bool? pri = true) => Qs("pri", pri);
 		///<summary>Comma-separated list of column names or column aliases to sort by</summary>
@@ -286,11 +294,8 @@ namespace OpenSearch.Client
 		public CatIndicesDescriptor Verbose(bool? verbose = true) => Qs("v", verbose);
 	}
 
-	/// <summary>
-	/// Descriptor for Master
-	/// <para>https://opensearch.org/docs/latest/opensearch/rest-api/cat/cat-master/</para>
-	/// Replaced by <see cref="CatClusterManagerDescriptor"/> in OpenSearch 2.0
-	/// </summary>
+	///<summary>Descriptor for Master <para>https://opensearch.org/docs/1.2/opensearch/rest-api/cat/cat-master/</para></summary>
+	///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="CatClusterManagerDescriptor"/> instead</remarks>
 	public partial class CatMasterDescriptor : RequestDescriptorBase<CatMasterDescriptor, CatMasterRequestParameters, ICatMasterRequest>, ICatMasterRequest
 	{
 		internal override ApiUrls ApiUrls => ApiUrlsLookups.CatMaster;
@@ -312,10 +317,8 @@ namespace OpenSearch.Client
 		public CatMasterDescriptor Verbose(bool? verbose = true) => Qs("v", verbose);
 	}
 
-	/// <summary>
-	/// Descriptor for cluster_manager
-	/// <para>https://opensearch.org/docs/latest/opensearch/rest-api/cat/cat-cluster_manager/</para>
-	/// </summary>
+	///<summary>Descriptor for Master <para>https://opensearch.org/docs/1.2/opensearch/rest-api/cat/cat-master/</para></summary>
+	///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="CatMasterDescriptor"/></remarks>
 	public partial class CatClusterManagerDescriptor : RequestDescriptorBase<CatClusterManagerDescriptor, CatClusterManagerRequestParameters, ICatClusterManagerRequest>, ICatClusterManagerRequest
 	{
 		internal override ApiUrls ApiUrls => ApiUrlsLookups.CatClusterManager;
@@ -329,8 +332,8 @@ namespace OpenSearch.Client
 		public CatClusterManagerDescriptor Help(bool? help = true) => Qs("help", help);
 		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
 		public CatClusterManagerDescriptor Local(bool? local = true) => Qs("local", local);
-		///<summary>Explicit operation timeout for connection to master node</summary>
-		public CatClusterManagerDescriptor ClusterManagerTimeout(Time mastertimeout) => Qs("cluster_manager_timeout", mastertimeout);
+		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		public CatClusterManagerDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Comma-separated list of column names or column aliases to sort by</summary>
 		public CatClusterManagerDescriptor SortByColumns(params string[] sortbycolumns) => Qs("s", sortbycolumns);
 		///<summary>Verbose mode. Display column headers</summary>
@@ -352,7 +355,11 @@ namespace OpenSearch.Client
 		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
 		public CatNodeAttributesDescriptor Local(bool? local = true) => Qs("local", local);
 		///<summary>Explicit operation timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public CatNodeAttributesDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public CatNodeAttributesDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Comma-separated list of column names or column aliases to sort by</summary>
 		public CatNodeAttributesDescriptor SortByColumns(params string[] sortbycolumns) => Qs("s", sortbycolumns);
 		///<summary>Verbose mode. Display column headers</summary>
@@ -376,7 +383,11 @@ namespace OpenSearch.Client
 		///<summary>Return help information</summary>
 		public CatNodesDescriptor Help(bool? help = true) => Qs("help", help);
 		///<summary>Explicit operation timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public CatNodesDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public CatNodesDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Comma-separated list of column names or column aliases to sort by</summary>
 		public CatNodesDescriptor SortByColumns(params string[] sortbycolumns) => Qs("s", sortbycolumns);
 		///<summary>Verbose mode. Display column headers</summary>
@@ -398,7 +409,11 @@ namespace OpenSearch.Client
 		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
 		public CatPendingTasksDescriptor Local(bool? local = true) => Qs("local", local);
 		///<summary>Explicit operation timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public CatPendingTasksDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public CatPendingTasksDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Comma-separated list of column names or column aliases to sort by</summary>
 		public CatPendingTasksDescriptor SortByColumns(params string[] sortbycolumns) => Qs("s", sortbycolumns);
 		///<summary>Verbose mode. Display column headers</summary>
@@ -422,7 +437,11 @@ namespace OpenSearch.Client
 		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
 		public CatPluginsDescriptor Local(bool? local = true) => Qs("local", local);
 		///<summary>Explicit operation timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public CatPluginsDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public CatPluginsDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Comma-separated list of column names or column aliases to sort by</summary>
 		public CatPluginsDescriptor SortByColumns(params string[] sortbycolumns) => Qs("s", sortbycolumns);
 		///<summary>Verbose mode. Display column headers</summary>
@@ -487,7 +506,11 @@ namespace OpenSearch.Client
 		///<summary>Return local information, do not retrieve the state from master node</summary>
 		public CatRepositoriesDescriptor Local(bool? local = true) => Qs("local", local);
 		///<summary>Explicit operation timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public CatRepositoriesDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public CatRepositoriesDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Comma-separated list of column names or column aliases to sort by</summary>
 		public CatRepositoriesDescriptor SortByColumns(params string[] sortbycolumns) => Qs("s", sortbycolumns);
 		///<summary>Verbose mode. Display column headers</summary>
@@ -569,7 +592,11 @@ namespace OpenSearch.Client
 		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
 		public CatShardsDescriptor Local(bool? local = true) => Qs("local", local);
 		///<summary>Explicit operation timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public CatShardsDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public CatShardsDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Comma-separated list of column names or column aliases to sort by</summary>
 		public CatShardsDescriptor SortByColumns(params string[] sortbycolumns) => Qs("s", sortbycolumns);
 		///<summary>Verbose mode. Display column headers</summary>
@@ -605,7 +632,11 @@ namespace OpenSearch.Client
 		///<summary>Set to true to ignore unavailable snapshots</summary>
 		public CatSnapshotsDescriptor IgnoreUnavailable(bool? ignoreunavailable = true) => Qs("ignore_unavailable", ignoreunavailable);
 		///<summary>Explicit operation timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public CatSnapshotsDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public CatSnapshotsDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Comma-separated list of column names or column aliases to sort by</summary>
 		public CatSnapshotsDescriptor SortByColumns(params string[] sortbycolumns) => Qs("s", sortbycolumns);
 		///<summary>Verbose mode. Display column headers</summary>
@@ -667,7 +698,11 @@ namespace OpenSearch.Client
 		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
 		public CatTemplatesDescriptor Local(bool? local = true) => Qs("local", local);
 		///<summary>Explicit operation timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public CatTemplatesDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public CatTemplatesDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Comma-separated list of column names or column aliases to sort by</summary>
 		public CatTemplatesDescriptor SortByColumns(params string[] sortbycolumns) => Qs("s", sortbycolumns);
 		///<summary>Verbose mode. Display column headers</summary>
@@ -703,7 +738,11 @@ namespace OpenSearch.Client
 		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
 		public CatThreadPoolDescriptor Local(bool? local = true) => Qs("local", local);
 		///<summary>Explicit operation timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public CatThreadPoolDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public CatThreadPoolDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Comma-separated list of column names or column aliases to sort by</summary>
 		public CatThreadPoolDescriptor SortByColumns(params string[] sortbycolumns) => Qs("s", sortbycolumns);
 		///<summary>Verbose mode. Display column headers</summary>
