@@ -151,21 +151,21 @@ namespace Tests.ClientConcepts.ConnectionPooling.Sniffing
 		public async Task SkipMasterOnlyNodes()
 		{
 			/**
-			 * In this example, We create a Virtual cluster with a Sniffing connection pool that seeds all the known master nodes.
+			 * In this example, We create a Virtual cluster with a Sniffing connection pool that seeds all the known cluster_manager nodes.
 			 * When the client sniffs on startup, we see that the cluster is 20 nodes in total, with the master eligible nodes
 			 * storing no data.
 			 */
-			var masterNodes = new[] {9200, 9201, 9202};
+			var clusterManagerNodes = new[] {9200, 9201, 9202};
 			var totalNodesInTheCluster = 20;
 			//
 			var audit = new Auditor(() => VirtualClusterWith
-				.MasterOnlyNodes(masterNodes.Length)
+				.ClusterManagerOnlyNodes(clusterManagerNodes.Length)
 				.ClientCalls(r => r.SucceedAlways())
 				.Sniff(s => s.SucceedAlways()
 					.Succeeds(Always, VirtualClusterWith
 						.Nodes(totalNodesInTheCluster)
-						.StoresNoData(masterNodes)
-						.MasterEligible(masterNodes)
+						.StoresNoData(clusterManagerNodes)
+						.MasterEligible(clusterManagerNodes)
 						.ClientCalls(r => r.SucceedAlways())
 					)
 				)
@@ -176,14 +176,14 @@ namespace Tests.ClientConcepts.ConnectionPooling.Sniffing
 				AssertPoolBeforeStartup = pool => // <1> Before the sniff, assert we only see three master only nodes
 				{
 					pool.Should().NotBeNull();
-					pool.Nodes.Should().HaveCount(3, "we seeded 3 master only nodes at the start of the application");
+					pool.Nodes.Should().HaveCount(3, "we seeded 3 cluster_manager only nodes at the start of the application");
 					pool.Nodes.Where(n => n.HoldsData).Should().HaveCount(0, "none of which hold data");
 				},
 				AssertPoolAfterStartup = (pool) => // <2> After the sniff, assert we now know about the existence of 20 nodes.
 				{
 					pool.Should().NotBeNull();
 					var nodes = pool.CreateView().ToList();
-					nodes.Count().Should().Be(20, "Master nodes are included in the registration of nodes since we still favor sniffing on them");
+					nodes.Count().Should().Be(20, "cluster_manager nodes are included in the registration of nodes since we still favor sniffing on them");
 				}
 			};
 
@@ -207,13 +207,13 @@ namespace Tests.ClientConcepts.ConnectionPooling.Sniffing
 					new ClientCall {{HealthyResponse, (a) =>
 					{
 						var port = a.Node.Uri.Port;
-						masterNodes.Should().NotContain(port);
+						clusterManagerNodes.Should().NotContain(port);
 						seenNodes.Add(port);
 					}}}
 				);
 			}
 
-			seenNodes.Should().HaveCount(totalNodesInTheCluster - masterNodes.Length); // <1> `seenNodes` is a hash set of all the ports we hit. assert that this is equal to `known total nodes - known master only nodes`
+			seenNodes.Should().HaveCount(totalNodesInTheCluster - clusterManagerNodes.Length); // <1> `seenNodes` is a hash set of all the ports we hit. assert that this is equal to `known total nodes - known cluster_manager only nodes`
 		}
 
 		/**
