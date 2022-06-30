@@ -41,7 +41,7 @@ namespace OpenSearch.Net.VirtualizedCluster
 		public static VirtualCluster ClusterManagerOnlyNodes(int numberOfNodes, int startFrom = 9200) =>
 			new VirtualCluster(
 				Enumerable.Range(startFrom, numberOfNodes)
-					.Select(n => new Node(new Uri($"http://localhost:{n}")) { HoldsData = false, MasterEligible = true })
+					.Select(n => new Node(new Uri($"http://localhost:{n}")) { HoldsData = false, ClusterManagerEligible = true })
 			);
 
 

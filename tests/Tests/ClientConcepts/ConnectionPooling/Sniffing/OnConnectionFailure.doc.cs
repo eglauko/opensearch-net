@@ -54,7 +54,7 @@ namespace Tests.ClientConcepts.ConnectionPooling.Sniffing
 		{
 			/**
 			* Here we seed our connection with 5 known nodes on ports 9200-9204, of which we think
-			* 9202, 9203, 9204 are master eligible nodes. Our virtualized cluster will throw once when doing
+			* 9202, 9203, 9204 are cluster_manager eligible nodes. Our virtualized cluster will throw once when doing
 			* a search on 9201. This should cause a sniff to be kicked off.
 			*/
 			var audit = new Auditor(() => VirtualClusterWith
@@ -67,7 +67,7 @@ namespace Tests.ClientConcepts.ConnectionPooling.Sniffing
 					.MasterEligible(9200, 9202)
 					.ClientCalls(r => r.OnPort(9201).Fails(Once))
 					.ClientCalls(r => r.SucceedAlways())
-					.Sniff(s => s.SucceedAlways(VirtualClusterWith // <2> After this second failure on 9201, another sniff will happen which returns a cluster state that no longer fails but looks completely different; It's now three nodes on ports 9210 - 9212, with 9210 and 9212 being master eligible.
+					.Sniff(s => s.SucceedAlways(VirtualClusterWith // <2> After this second failure on 9201, another sniff will happen which returns a cluster state that no longer fails but looks completely different; It's now three nodes on ports 9210 - 9212, with 9210 and 9212 being cluster_manager eligible.
 						.Nodes(3, 9210)
 						.MasterEligible(9210, 9212)
 						.ClientCalls(r => r.SucceedAlways())

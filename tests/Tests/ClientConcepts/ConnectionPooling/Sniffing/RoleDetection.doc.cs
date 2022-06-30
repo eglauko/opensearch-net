@@ -52,7 +52,7 @@ namespace Tests.ClientConcepts.ConnectionPooling.Sniffing
 		/**=== Sniffing role detection
 		*
 		* When we sniff the cluster state, we detect the role of each node, for example,
-		* whether it's master eligible, a node that holds data, etc.
+		* whether it's cluster_manager eligible, a node that holds data, etc.
 		* We can then use this information when selecting a node to perform an API call on.
 		*/
 		[U, SuppressMessage("AsyncUsage", "AsyncFixer001:Unnecessary async/await usage", Justification = "Its a test")]
@@ -72,13 +72,13 @@ namespace Tests.ClientConcepts.ConnectionPooling.Sniffing
 				{
 					pool.Should().NotBeNull();
 					pool.Nodes.Should().HaveCount(10);
-					pool.Nodes.Where(n => n.MasterEligible).Should().HaveCount(10);
+					pool.Nodes.Where(n => n.ClusterManagerEligible).Should().HaveCount(10);
 				},
 				AssertPoolAfterStartup = (pool) =>
 				{
 					pool.Should().NotBeNull();
 					pool.Nodes.Should().HaveCount(8);
-					pool.Nodes.Where(n => n.MasterEligible).Should().HaveCount(3);
+					pool.Nodes.Where(n => n.ClusterManagerEligible).Should().HaveCount(3);
 				}
 			};
 
@@ -152,7 +152,7 @@ namespace Tests.ClientConcepts.ConnectionPooling.Sniffing
 		{
 			/**
 			 * In this example, We create a Virtual cluster with a Sniffing connection pool that seeds all the known cluster_manager nodes.
-			 * When the client sniffs on startup, we see that the cluster is 20 nodes in total, with the master eligible nodes
+			 * When the client sniffs on startup, we see that the cluster is 20 nodes in total, with the cluster_manager eligible nodes
 			 * storing no data.
 			 */
 			var clusterManagerNodes = new[] {9200, 9201, 9202};
@@ -173,7 +173,7 @@ namespace Tests.ClientConcepts.ConnectionPooling.Sniffing
 				.Settings(s=>s.DisablePing())
 			)
 			{
-				AssertPoolBeforeStartup = pool => // <1> Before the sniff, assert we only see three master only nodes
+				AssertPoolBeforeStartup = pool => // <1> Before the sniff, assert we only see three cluster_manager only nodes
 				{
 					pool.Should().NotBeNull();
 					pool.Nodes.Should().HaveCount(3, "we seeded 3 cluster_manager only nodes at the start of the application");
@@ -188,17 +188,17 @@ namespace Tests.ClientConcepts.ConnectionPooling.Sniffing
 			};
 
 			/** After the sniff has happened on 9200 before the first API call, assert that the subsequent API
-			 * call hits the first non master eligible node
+			 * call hits the first non cluster_manager eligible node
 			 */
 			audit = await audit.TraceStartup(new ClientCall
 			{
 				{ SniffSuccess, 9200},
-				{ HealthyResponse, 9203} // <1> Healthy response from 9203, not a master eligible node
+				{ HealthyResponse, 9203} // <1> Healthy response from 9203, not a cluster_manager eligible node
 			});
 
 			/**
 			 * To verify that the client behaves as we expect when making requests to the virtual cluster, make 1000 different
-			 * client calls and assert that each is not sent to any of the known master only nodes
+			 * client calls and assert that each is not sent to any of the known cluster_manager only nodes
 			 */
 			var seenNodes = new HashSet<int>();
 			foreach (var _ in Enumerable.Range(0, 1000))
@@ -411,12 +411,12 @@ namespace Tests.ClientConcepts.ConnectionPooling.Sniffing
 		public async Task SniffPicksUpRoles()
 		{
 			var node = SniffAndReturnNode();
-			node.MasterEligible.Should().BeTrue();
+			node.ClusterManagerEligible.Should().BeTrue();
 			node.HoldsData.Should().BeFalse();
 			node.Settings.Should().NotBeEmpty().And.Contain("node.attr.rack_id", "rack_one");
 
 			node = await SniffAndReturnNodeAsync();
-			node.MasterEligible.Should().BeTrue();
+			node.ClusterManagerEligible.Should().BeTrue();
 			node.HoldsData.Should().BeFalse();
 			node.Settings.Should().NotBeEmpty().And.Contain("node.attr.rack_id", "rack_one");
 		}

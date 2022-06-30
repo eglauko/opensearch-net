@@ -78,7 +78,7 @@ namespace OpenSearch.Net
 				{
 					Name = info.name,
 					Id = kv.Key,
-					MasterEligible = info.MasterEligible,
+					ClusterManagerEligible = info.MasterEligible,
 					HoldsData = info.HoldsData,
 					IngestEnabled = info.IngestEnabled,
 					HttpEnabled = info.HttpEnabled,

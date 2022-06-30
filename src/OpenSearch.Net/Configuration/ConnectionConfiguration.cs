@@ -294,7 +294,7 @@ namespace OpenSearch.Net
 		/// <see cref="IConnectionPool.SupportsReseeding" />
 		/// in which case cluster_manager only nodes are excluded from API calls.
 		/// </summary>
-		private static bool DefaultReseedableNodePredicate(Node node) => !node.MasterOnlyNode;
+		private static bool DefaultReseedableNodePredicate(Node node) => !node.ClusterManagerOnlyNode;
 
 		private static bool DefaultNodePredicate(Node node) => true;
 
