@@ -54,14 +54,20 @@ namespace Tests.Cluster.ClusterState
 		protected override void ExpectResponse(ClusterStateResponse response)
 		{
 			response.ClusterName.Should().NotBeNullOrWhiteSpace();
-			response.MasterNode.Should().NotBeNullOrWhiteSpace();
+			if (Cluster.ClusterConfiguration.Version < "2.0.0")
+				response.MasterNode.Should().NotBeNullOrWhiteSpace();
+			else
+				response.ClusterManagerNode.Should().NotBeNullOrWhiteSpace();
 			response.StateUUID.Should().NotBeNullOrWhiteSpace();
 			response.Version.Should().BeGreaterThan(0);
 
-			var masterNode = response.State["nodes"][response.MasterNode];
-			var masterNodeName = masterNode["name"].Value as string;
-			var transportAddress = masterNode["transport_address"].Value as string;
-			masterNodeName.Should().NotBeNullOrWhiteSpace();
+			var clusterManagerNode =
+				Cluster.ClusterConfiguration.Version < "2.0.0"
+					? response.State["nodes"][response.MasterNode]
+					: response.State["nodes"][response.ClusterManagerNode];
+			var clusterManagerNodeName = clusterManagerNode["name"].Value as string;
+			var transportAddress = clusterManagerNode["transport_address"].Value as string;
+			clusterManagerNodeName.Should().NotBeNullOrWhiteSpace();
 			transportAddress.Should().NotBeNullOrWhiteSpace();
 
 			var getSyntax = response.Get<string>($"nodes.{response.MasterNode}.transport_address");
