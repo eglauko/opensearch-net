@@ -122,7 +122,7 @@ namespace OpenSearch.Client
 		public CatAllocationDescriptor Help(bool? help = true) => Qs("help", help);
 		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public CatAllocationDescriptor Local(bool? local = true) => Qs("local", local);
-		///<summary>Explicit operation timeout for connection to cluster_manager node</summary>
+		///<summary>Explicit operation timeout for connection to master node</summary>
 		public CatAllocationDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
 		///<summary>Comma-separated list of column names or column aliases to sort by</summary>
 		public CatAllocationDescriptor SortByColumns(params string[] sortbycolumns) => Qs("s", sortbycolumns);
