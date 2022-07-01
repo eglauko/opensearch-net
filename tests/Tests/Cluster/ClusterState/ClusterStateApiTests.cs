@@ -53,8 +53,10 @@ namespace Tests.Cluster.ClusterState
 
 		protected override void ExpectResponse(ClusterStateResponse response)
 		{
+			var isPre20version = Cluster.ClusterConfiguration.Version < "2.0.0";
+
 			response.ClusterName.Should().NotBeNullOrWhiteSpace();
-			if (Cluster.ClusterConfiguration.Version < "2.0.0")
+			if (isPre20version)
 				response.MasterNode.Should().NotBeNullOrWhiteSpace();
 			else
 				response.ClusterManagerNode.Should().NotBeNullOrWhiteSpace();
@@ -62,7 +64,7 @@ namespace Tests.Cluster.ClusterState
 			response.Version.Should().BeGreaterThan(0);
 
 			var clusterManagerNode =
-				Cluster.ClusterConfiguration.Version < "2.0.0"
+				isPre20version
 					? response.State["nodes"][response.MasterNode]
 					: response.State["nodes"][response.ClusterManagerNode];
 			var clusterManagerNodeName = clusterManagerNode["name"].Value as string;
@@ -70,7 +72,7 @@ namespace Tests.Cluster.ClusterState
 			clusterManagerNodeName.Should().NotBeNullOrWhiteSpace();
 			transportAddress.Should().NotBeNullOrWhiteSpace();
 
-			var getSyntax = response.Get<string>($"nodes.{response.MasterNode}.transport_address");
+			var getSyntax = response.Get<string>($"nodes.{(isPre20version ? response.MasterNode : response.ClusterManagerNode)}.transport_address");
 
 			getSyntax.Should().NotBeNullOrWhiteSpace().And.Be(transportAddress);
 
@@ -80,7 +82,7 @@ namespace Tests.Cluster.ClusterState
 			var dict = response.Get<DynamicDictionary>($"nodes");
 
 			dict.Count.Should().BeGreaterThan(0);
-			var node = dict[response.MasterNode].ToDictionary();
+			var node = dict[(isPre20version ? response.MasterNode : response.ClusterManagerNode)].ToDictionary();
 			node.Should().NotBeNull().And.ContainKey("name");
 
 			object dictDoesNotExist = response.Get<DynamicDictionary>("nodes2");
