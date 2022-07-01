@@ -69,7 +69,7 @@ namespace OpenSearch.Net.VirtualizedCluster
 			return this;
 		}
 
-		public VirtualCluster MasterEligible(params int[] ports)
+		public VirtualCluster ClusterManagerEligible(params int[] ports)
 		{
 			foreach (var node in _nodes.Where(n => !ports.Contains(n.Uri.Port)))
 				node.ClusterManagerEligible = false;

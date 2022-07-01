@@ -192,7 +192,7 @@ namespace Tests.ClientConcepts.ConnectionPooling.Sniffing
 		 * Sniffing prefers to run on cluster_manager eligible nodes
 		 */
 		[U] [SuppressMessage("AsyncUsage", "AsyncFixer001:Unnecessary async/await usage", Justification = "Its a test")]
-		public async Task SniffPrefersMasterNodes()
+		public async Task SniffPrefersClusterManagerNodes()
 		{
 			var audit = new Auditor(() => VirtualClusterWith
 				.Nodes(new[] {
@@ -219,7 +219,7 @@ namespace Tests.ClientConcepts.ConnectionPooling.Sniffing
 		 * although it will fail over to non-cluster_manager eligible nodes when sniffing fails on cluster_manager eligible nodes
 		 */
 		[U] [SuppressMessage("AsyncUsage", "AsyncFixer001:Unnecessary async/await usage", Justification = "Its a test")]
-		public async Task SniffPrefersMasterNodesButStillFailsOver()
+		public async Task SniffPrefersClusterManagerNodesButStillFailsOver()
 		{
 			var audit = new Auditor(() => VirtualClusterWith
 				.Nodes(new[] {

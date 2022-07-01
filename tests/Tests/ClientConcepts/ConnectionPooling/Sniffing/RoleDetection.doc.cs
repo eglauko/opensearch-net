@@ -56,13 +56,13 @@ namespace Tests.ClientConcepts.ConnectionPooling.Sniffing
 		* We can then use this information when selecting a node to perform an API call on.
 		*/
 		[U, SuppressMessage("AsyncUsage", "AsyncFixer001:Unnecessary async/await usage", Justification = "Its a test")]
-		public async Task DetectsMasterNodes()
+		public async Task DetectsClusterManagerNodes()
 		{
 			var audit = new Auditor(() => VirtualClusterWith
 				.Nodes(10)
 				.Sniff(s => s.Fails(Always))
 				.Sniff(s => s.OnPort(9202)
-					.Succeeds(Always, VirtualClusterWith.Nodes(8).MasterEligible(9200, 9201, 9202))
+					.Succeeds(Always, VirtualClusterWith.Nodes(8).ClusterManagerEligible(9200, 9201, 9202))
 				)
 				.SniffingConnectionPool()
 				.AllDefaults()
@@ -148,7 +148,7 @@ namespace Tests.ClientConcepts.ConnectionPooling.Sniffing
 		}
 
 		[U, SuppressMessage("AsyncUsage", "AsyncFixer001:Unnecessary async/await usage", Justification = "Its a test")]
-		public async Task SkipMasterOnlyNodes()
+		public async Task SkipClusterManagerOnlyNodes()
 		{
 			/**
 			 * In this example, We create a Virtual cluster with a Sniffing connection pool that seeds all the known cluster_manager nodes.
@@ -165,7 +165,7 @@ namespace Tests.ClientConcepts.ConnectionPooling.Sniffing
 					.Succeeds(Always, VirtualClusterWith
 						.Nodes(totalNodesInTheCluster)
 						.StoresNoData(clusterManagerNodes)
-						.MasterEligible(clusterManagerNodes)
+						.ClusterManagerEligible(clusterManagerNodes)
 						.ClientCalls(r => r.SucceedAlways())
 					)
 				)
@@ -390,7 +390,7 @@ namespace Tests.ClientConcepts.ConnectionPooling.Sniffing
 			DefaultNodeSettings =
 			{
 				{"node.data", "false"},
-				{"node.master", "true"},
+				{"node.cluster_manager", "true"},
 				{"node.attr.rack_id", "rack_one"}
 			}
 		}) { }
