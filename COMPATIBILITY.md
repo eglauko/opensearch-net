@@ -1,8 +1,9 @@
 - [Compatibility with OpenSearch](#compatibility-with-opensearch)
+- [Upgrading](#upgrading)
 
 ## Compatibility with OpenSearch
 
-The below matrix shows the compatibility of the `opensearch-net` with versions of [`OpenSearch`](https://opensearch.org/downloads.html#opensearch). Currently this client is in a pre-release phase. The below matrix shows compatibility for the upcoming version.
+The below matrix shows the compatibility of the [`opensearch-net`](https://www.nuget.org/profiles/opensearchproject) with versions of [`OpenSearch`](https://opensearch.org/downloads.html#opensearch).
 
 | OpenSearch Version | Client Version |
 | --- | --- |
@@ -16,3 +17,14 @@ The below matrix shows the compatibility of the `opensearch-net` with versions o
 | 1.2.4 | 1.0.0 |
 | 1.3.0 | 1.0.0 |
 | 1.3.1 | 1.0.0 |
+| 1.3.2 | 1.0.0 |
+| 1.3.3 | 1.0.0 |
+| 2.0.0 | 2.0.0 |
+| 2.0.1 | 2.0.0 |
+
+
+The client is also fully compatible with [`OpenDistro`](https://opendistro.github.io/for-elasticsearch/) 1.13.x.
+
+## Upgrading
+
+Major versions of OpenSearch introduce breaking changes that require careful upgrades of the client. While `opensearch-net` client 2.0.0 works against the latest OpenSearch 1.x, certain deprecated features removed in OpenSearch 2.0 have also been removed from the client. Please refer to the [OpenSearch documentation](https://opensearch.org/docs/latest/clients/index/) for more information.
