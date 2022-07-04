@@ -482,6 +482,7 @@ namespace OpenSearch.Client
 	}
 
 	///<summary>Descriptor for TypeExists <para>https://opensearch.org/docs/latest/opensearch/rest-api/index-apis/exists/</para></summary>
+	///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 	public partial class TypeExistsDescriptor : RequestDescriptorBase<TypeExistsDescriptor, TypeExistsRequestParameters, ITypeExistsRequest>, ITypeExistsRequest
 	{
 		internal override ApiUrls ApiUrls => ApiUrlsLookups.IndicesTypeExists;

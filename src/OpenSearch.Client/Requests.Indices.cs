@@ -823,6 +823,7 @@ namespace OpenSearch.Client
 		}
 	}
 
+	/// <remarks>Deprecated as of OpenSearch 2.0</remarks>
 	[InterfaceDataContract]
 	public partial interface ITypeExistsRequest : IRequest<TypeExistsRequestParameters>
 	{
@@ -840,6 +841,7 @@ namespace OpenSearch.Client
 	}
 
 	///<summary>Request for TypeExists <para>https://opensearch.org/docs/latest/opensearch/rest-api/index-apis/exists/</para></summary>
+	///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 	public partial class TypeExistsRequest : PlainRequestBase<TypeExistsRequestParameters>, ITypeExistsRequest
 	{
 		protected ITypeExistsRequest Self => this;

@@ -528,6 +528,7 @@ namespace OpenSearch.Net.Specification.IndicesApi
 	}
 
 	///<summary>Request options for TypeExists <para>https://opensearch.org/docs/latest/opensearch/rest-api/index-apis/exists/</para></summary>
+	///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 	public class TypeExistsRequestParameters : RequestParameters<TypeExistsRequestParameters>
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.HEAD;
