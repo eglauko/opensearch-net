@@ -2,7 +2,7 @@
   "cat.cluster_manager":{
     "documentation":{
       "url":"https://opensearch.org/docs/2.0/opensearch/rest-api/cat/cat-cluster_manager/",
-      "description":"Returns information about the cluster_manager node. Introduced in OpenSearch 2.0 instead of cat.master."
+      "description":"Returns information about the cluster_manager node. Introduced in OpenSearch 2.0 instead of cat-master."
     },
     "stability":"stable",
     "visibility":"public",
