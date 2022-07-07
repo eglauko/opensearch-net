@@ -67,13 +67,13 @@ namespace OpenSearch.Net
 		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerNode"/> instead</remarks>
 		[EnumMember(Value = "master_node")]
 		MasterNode = 1 << 5,
+		[EnumMember(Value = "version")]
+		Version = 1 << 6,
+		[EnumMember(Value = "_all")]
+		All = 1 << 7,
 		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterNode"/></remarks>
 		[EnumMember(Value = "cluster_manager_node")]
-		ClusterManagerNode = 1 << 6,
-		[EnumMember(Value = "version")]
-		Version = 1 << 7,
-		[EnumMember(Value = "_all")]
-		All = 1 << 8
+		ClusterManagerNode = 1 << 8,
 	}
 
 	[Flags, StringEnum]
