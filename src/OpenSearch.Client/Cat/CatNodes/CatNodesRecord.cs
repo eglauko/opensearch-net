@@ -33,7 +33,7 @@ namespace OpenSearch.Client
 	public class CatNodesRecord : ICatRecord
 	{
 		public string Build => _b ?? _build;
-		public string ClusterManager => _cm ?? _cluster_manager;
+		public string ClusterManager => Master ?? _cm ?? _cluster_manager;
 		public string CompletionSize => _completionSize ?? _cs ?? _completion_size;
 
 		[DataMember(Name ="cpu")]

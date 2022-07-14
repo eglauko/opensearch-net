@@ -119,7 +119,7 @@ namespace OpenSearch.Client
 			set => Q("help", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -203,7 +203,7 @@ namespace OpenSearch.Client
 			set => Q("help", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -548,7 +548,7 @@ namespace OpenSearch.Client
 			set => Q("include_unloaded_segments", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -624,7 +624,7 @@ namespace OpenSearch.Client
 			set => Q("help", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -758,7 +758,7 @@ namespace OpenSearch.Client
 			set => Q("help", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -897,7 +897,7 @@ namespace OpenSearch.Client
 			set => Q("help", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -970,7 +970,7 @@ namespace OpenSearch.Client
 			set => Q("include_bootstrap", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -1127,7 +1127,7 @@ namespace OpenSearch.Client
 			set => Q("help", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -1295,7 +1295,7 @@ namespace OpenSearch.Client
 			set => Q("help", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -1547,7 +1547,7 @@ namespace OpenSearch.Client
 			set => Q("help", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -1631,7 +1631,7 @@ namespace OpenSearch.Client
 			set => Q("help", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");

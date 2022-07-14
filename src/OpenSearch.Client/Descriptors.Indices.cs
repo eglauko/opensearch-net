@@ -406,7 +406,7 @@ namespace OpenSearch.Client
 		public IndexExistsDescriptor IgnoreUnavailable(bool? ignoreunavailable = true) => Qs("ignore_unavailable", ignoreunavailable);
 		///<summary>Whether to return all default setting for each of the indices.</summary>
 		public IndexExistsDescriptor IncludeDefaults(bool? includedefaults = true) => Qs("include_defaults", includedefaults);
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public IndexExistsDescriptor Local(bool? local = true) => Qs("local", local);
 	}
 
@@ -450,7 +450,7 @@ namespace OpenSearch.Client
 		public AliasExistsDescriptor ExpandWildcards(ExpandWildcards? expandwildcards) => Qs("expand_wildcards", expandwildcards);
 		///<summary>Whether specified concrete indices should be ignored when unavailable (missing or closed)</summary>
 		public AliasExistsDescriptor IgnoreUnavailable(bool? ignoreunavailable = true) => Qs("ignore_unavailable", ignoreunavailable);
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public AliasExistsDescriptor Local(bool? local = true) => Qs("local", local);
 	}
 
@@ -475,7 +475,7 @@ namespace OpenSearch.Client
 		// Request parameters
 		///<summary>Return settings in flat format (default: false)</summary>
 		public IndexTemplateExistsDescriptor FlatSettings(bool? flatsettings = true) => Qs("flat_settings", flatsettings);
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public IndexTemplateExistsDescriptor Local(bool? local = true) => Qs("local", local);
 		///<summary>Explicit operation timeout for connection to master node</summary>
 		public IndexTemplateExistsDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
@@ -515,7 +515,7 @@ namespace OpenSearch.Client
 		public TypeExistsDescriptor ExpandWildcards(ExpandWildcards? expandwildcards) => Qs("expand_wildcards", expandwildcards);
 		///<summary>Whether specified concrete indices should be ignored when unavailable (missing or closed)</summary>
 		public TypeExistsDescriptor IgnoreUnavailable(bool? ignoreunavailable = true) => Qs("ignore_unavailable", ignoreunavailable);
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public TypeExistsDescriptor Local(bool? local = true) => Qs("local", local);
 	}
 
@@ -633,7 +633,7 @@ namespace OpenSearch.Client
 		public GetIndexDescriptor IncludeDefaults(bool? includedefaults = true) => Qs("include_defaults", includedefaults);
 		///<summary>Whether to add the type name to the response (default: false)</summary>
 		public GetIndexDescriptor IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public GetIndexDescriptor Local(bool? local = true) => Qs("local", local);
 		///<summary>Specify timeout for connection to master</summary>
 		public GetIndexDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
@@ -686,7 +686,7 @@ namespace OpenSearch.Client
 		public GetAliasDescriptor ExpandWildcards(ExpandWildcards? expandwildcards) => Qs("expand_wildcards", expandwildcards);
 		///<summary>Whether specified concrete indices should be ignored when unavailable (missing or closed)</summary>
 		public GetAliasDescriptor IgnoreUnavailable(bool? ignoreunavailable = true) => Qs("ignore_unavailable", ignoreunavailable);
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public GetAliasDescriptor Local(bool? local = true) => Qs("local", local);
 	}
 
@@ -734,7 +734,7 @@ namespace OpenSearch.Client
 		public GetFieldMappingDescriptor<TDocument> IncludeDefaults(bool? includedefaults = true) => Qs("include_defaults", includedefaults);
 		///<summary>Whether a type should be returned in the body of the mappings.</summary>
 		public GetFieldMappingDescriptor<TDocument> IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public GetFieldMappingDescriptor<TDocument> Local(bool? local = true) => Qs("local", local);
 	}
 
@@ -826,7 +826,7 @@ namespace OpenSearch.Client
 		public GetIndexSettingsDescriptor IgnoreUnavailable(bool? ignoreunavailable = true) => Qs("ignore_unavailable", ignoreunavailable);
 		///<summary>Whether to return all default setting for each of the indices.</summary>
 		public GetIndexSettingsDescriptor IncludeDefaults(bool? includedefaults = true) => Qs("include_defaults", includedefaults);
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public GetIndexSettingsDescriptor Local(bool? local = true) => Qs("local", local);
 		///<summary>Specify timeout for connection to master</summary>
 		public GetIndexSettingsDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
@@ -856,7 +856,7 @@ namespace OpenSearch.Client
 		public GetIndexTemplateDescriptor FlatSettings(bool? flatsettings = true) => Qs("flat_settings", flatsettings);
 		///<summary>Whether a type should be returned in the body of the mappings.</summary>
 		public GetIndexTemplateDescriptor IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public GetIndexTemplateDescriptor Local(bool? local = true) => Qs("local", local);
 		///<summary>Explicit operation timeout for connection to master node</summary>
 		public GetIndexTemplateDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
