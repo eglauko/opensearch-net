@@ -259,6 +259,7 @@ namespace OpenSearch.Net.Specification.IndicesApi
 		public override HttpMethod DefaultHttpMethod => HttpMethod.PUT;
 		public override bool SupportsBody => true;
 		///<summary>Whether a type should be expected in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public bool? IncludeTypeName
 		{
 			get => Q<bool? >("include_type_name");
@@ -737,6 +738,7 @@ namespace OpenSearch.Net.Specification.IndicesApi
 		}
 
 		///<summary>Whether to add the type name to the response (default: false)</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public bool? IncludeTypeName
 		{
 			get => Q<bool? >("include_type_name");
@@ -832,6 +834,7 @@ namespace OpenSearch.Net.Specification.IndicesApi
 		}
 
 		///<summary>Whether a type should be returned in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public bool? IncludeTypeName
 		{
 			get => Q<bool? >("include_type_name");
@@ -903,6 +906,7 @@ namespace OpenSearch.Net.Specification.IndicesApi
 		}
 
 		///<summary>Whether to add the type name to the response (default: false)</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public bool? IncludeTypeName
 		{
 			get => Q<bool? >("include_type_name");
@@ -988,6 +992,7 @@ namespace OpenSearch.Net.Specification.IndicesApi
 		}
 
 		///<summary>Whether a type should be returned in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public bool? IncludeTypeName
 		{
 			get => Q<bool? >("include_type_name");
@@ -1137,6 +1142,7 @@ namespace OpenSearch.Net.Specification.IndicesApi
 		}
 
 		///<summary>Whether a type should be expected in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public bool? IncludeTypeName
 		{
 			get => Q<bool? >("include_type_name");
@@ -1236,6 +1242,7 @@ namespace OpenSearch.Net.Specification.IndicesApi
 		}
 
 		///<summary>Whether a type should be returned in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public bool? IncludeTypeName
 		{
 			get => Q<bool? >("include_type_name");
@@ -1326,6 +1333,7 @@ namespace OpenSearch.Net.Specification.IndicesApi
 		}
 
 		///<summary>Whether a type should be included in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public bool? IncludeTypeName
 		{
 			get => Q<bool? >("include_type_name");

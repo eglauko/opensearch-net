@@ -264,6 +264,7 @@ namespace OpenSearch.Client
 			where TOther : class => Assign(typeof(TOther), (a, v) => a.RouteValues.Required("index", (IndexName)v));
 		// Request parameters
 		///<summary>Whether a type should be expected in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public CreateIndexDescriptor IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
 		///<summary>Specify timeout for connection to master</summary>
 		public CreateIndexDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
@@ -633,6 +634,7 @@ namespace OpenSearch.Client
 		///<summary>Whether to return all default setting for each of the indices.</summary>
 		public GetIndexDescriptor IncludeDefaults(bool? includedefaults = true) => Qs("include_defaults", includedefaults);
 		///<summary>Whether to add the type name to the response (default: false)</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public GetIndexDescriptor IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
 		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public GetIndexDescriptor Local(bool? local = true) => Qs("local", local);
@@ -734,6 +736,7 @@ namespace OpenSearch.Client
 		///<summary>Whether the default mapping values should be returned as well</summary>
 		public GetFieldMappingDescriptor<TDocument> IncludeDefaults(bool? includedefaults = true) => Qs("include_defaults", includedefaults);
 		///<summary>Whether a type should be returned in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public GetFieldMappingDescriptor<TDocument> IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
 		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public GetFieldMappingDescriptor<TDocument> Local(bool? local = true) => Qs("local", local);
@@ -771,6 +774,7 @@ namespace OpenSearch.Client
 		///<summary>Whether specified concrete indices should be ignored when unavailable (missing or closed)</summary>
 		public GetMappingDescriptor<TDocument> IgnoreUnavailable(bool? ignoreunavailable = true) => Qs("ignore_unavailable", ignoreunavailable);
 		///<summary>Whether to add the type name to the response (default: false)</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public GetMappingDescriptor<TDocument> IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
 		///<summary>Specify timeout for connection to master</summary>
 		public GetMappingDescriptor<TDocument> MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
@@ -856,6 +860,7 @@ namespace OpenSearch.Client
 		///<summary>Return settings in flat format (default: false)</summary>
 		public GetIndexTemplateDescriptor FlatSettings(bool? flatsettings = true) => Qs("flat_settings", flatsettings);
 		///<summary>Whether a type should be returned in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public GetIndexTemplateDescriptor IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
 		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public GetIndexTemplateDescriptor Local(bool? local = true) => Qs("local", local);
@@ -969,6 +974,7 @@ namespace OpenSearch.Client
 		///<summary>Whether specified concrete indices should be ignored when unavailable (missing or closed)</summary>
 		public PutMappingDescriptor<TDocument> IgnoreUnavailable(bool? ignoreunavailable = true) => Qs("ignore_unavailable", ignoreunavailable);
 		///<summary>Whether a type should be expected in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public PutMappingDescriptor<TDocument> IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
 		///<summary>Specify timeout for connection to master</summary>
 		public PutMappingDescriptor<TDocument> MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
@@ -1041,6 +1047,7 @@ namespace OpenSearch.Client
 		///<summary>Whether the index template should only be added if new or can also replace an existing one</summary>
 		public PutIndexTemplateDescriptor Create(bool? create = true) => Qs("create", create);
 		///<summary>Whether a type should be returned in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public PutIndexTemplateDescriptor IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
 		///<summary>Specify timeout for connection to master</summary>
 		public PutIndexTemplateDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
@@ -1134,6 +1141,7 @@ namespace OpenSearch.Client
 		///<summary>If set to true the rollover action will only be validated but not actually performed even if a condition matches. The default is false</summary>
 		public RolloverIndexDescriptor DryRun(bool? dryrun = true) => Qs("dry_run", dryrun);
 		///<summary>Whether a type should be included in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public RolloverIndexDescriptor IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
 		///<summary>Specify timeout for connection to master</summary>
 		public RolloverIndexDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
