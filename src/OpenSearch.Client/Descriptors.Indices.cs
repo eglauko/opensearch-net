@@ -90,8 +90,12 @@ namespace OpenSearch.Client
 		public AddIndexBlockDescriptor ExpandWildcards(ExpandWildcards? expandwildcards) => Qs("expand_wildcards", expandwildcards);
 		///<summary>Whether specified concrete indices should be ignored when unavailable (missing or closed)</summary>
 		public AddIndexBlockDescriptor IgnoreUnavailable(bool? ignoreunavailable = true) => Qs("ignore_unavailable", ignoreunavailable);
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public AddIndexBlockDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public AddIndexBlockDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Explicit operation timeout</summary>
 		public AddIndexBlockDescriptor Timeout(Time timeout) => Qs("timeout", timeout);
 	}
@@ -191,8 +195,12 @@ namespace OpenSearch.Client
 		public CloneIndexDescriptor Index<TOther>()
 			where TOther : class => Assign(typeof(TOther), (a, v) => a.RouteValues.Required("index", (IndexName)v));
 		// Request parameters
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public CloneIndexDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public CloneIndexDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Explicit operation timeout</summary>
 		public CloneIndexDescriptor Timeout(Time timeout) => Qs("timeout", timeout);
 		///<summary>Set the number of active shards to wait for on the cloned index before the operation returns.</summary>
@@ -231,8 +239,12 @@ namespace OpenSearch.Client
 		public CloseIndexDescriptor ExpandWildcards(ExpandWildcards? expandwildcards) => Qs("expand_wildcards", expandwildcards);
 		///<summary>Whether specified concrete indices should be ignored when unavailable (missing or closed)</summary>
 		public CloseIndexDescriptor IgnoreUnavailable(bool? ignoreunavailable = true) => Qs("ignore_unavailable", ignoreunavailable);
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public CloseIndexDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public CloseIndexDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Explicit operation timeout</summary>
 		public CloseIndexDescriptor Timeout(Time timeout) => Qs("timeout", timeout);
 		///<summary>Sets the number of active shards to wait for before the operation returns.</summary>
@@ -266,8 +278,12 @@ namespace OpenSearch.Client
 		///<summary>Whether a type should be expected in the body of the mappings.</summary>
 		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public CreateIndexDescriptor IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public CreateIndexDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public CreateIndexDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Explicit operation timeout</summary>
 		public CreateIndexDescriptor Timeout(Time timeout) => Qs("timeout", timeout);
 		///<summary>Set the number of active shards to wait for before the operation returns.</summary>
@@ -306,8 +322,12 @@ namespace OpenSearch.Client
 		public DeleteIndexDescriptor ExpandWildcards(ExpandWildcards? expandwildcards) => Qs("expand_wildcards", expandwildcards);
 		///<summary>Ignore unavailable indexes (default: false)</summary>
 		public DeleteIndexDescriptor IgnoreUnavailable(bool? ignoreunavailable = true) => Qs("ignore_unavailable", ignoreunavailable);
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public DeleteIndexDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public DeleteIndexDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Explicit operation timeout</summary>
 		public DeleteIndexDescriptor Timeout(Time timeout) => Qs("timeout", timeout);
 	}
@@ -340,8 +360,12 @@ namespace OpenSearch.Client
 		///<summary>A shortcut into calling Index(Indices.All)</summary>
 		public DeleteAliasDescriptor AllIndices() => Index(Indices.All);
 		// Request parameters
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public DeleteAliasDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public DeleteAliasDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Explicit timestamp for the document</summary>
 		public DeleteAliasDescriptor Timeout(Time timeout) => Qs("timeout", timeout);
 	}
@@ -365,8 +389,12 @@ namespace OpenSearch.Client
 		// values part of the url path
 		Name IDeleteIndexTemplateRequest.Name => Self.RouteValues.Get<Name>("name");
 		// Request parameters
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public DeleteIndexTemplateDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public DeleteIndexTemplateDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Explicit operation timeout</summary>
 		public DeleteIndexTemplateDescriptor Timeout(Time timeout) => Qs("timeout", timeout);
 	}
@@ -478,8 +506,13 @@ namespace OpenSearch.Client
 		public IndexTemplateExistsDescriptor FlatSettings(bool? flatsettings = true) => Qs("flat_settings", flatsettings);
 		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public IndexTemplateExistsDescriptor Local(bool? local = true) => Qs("local", local);
-		///<summary>Explicit operation timeout for connection to master node</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public IndexTemplateExistsDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public IndexTemplateExistsDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 	}
 
 	///<summary>Descriptor for TypeExists <para>https://opensearch.org/docs/latest/opensearch/rest-api/index-apis/exists/</para></summary>
@@ -638,8 +671,12 @@ namespace OpenSearch.Client
 		public GetIndexDescriptor IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
 		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public GetIndexDescriptor Local(bool? local = true) => Qs("local", local);
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public GetIndexDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public GetIndexDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 	}
 
 	///<summary>Descriptor for GetAlias <para>https://opensearch.org/docs/latest/opensearch/rest-api/alias/</para></summary>
@@ -776,8 +813,12 @@ namespace OpenSearch.Client
 		///<summary>Whether to add the type name to the response (default: false)</summary>
 		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public GetMappingDescriptor<TDocument> IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public GetMappingDescriptor<TDocument> MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public GetMappingDescriptor<TDocument> ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 	}
 
 	///<summary>Descriptor for GetSettings <para></para></summary>
@@ -833,8 +874,12 @@ namespace OpenSearch.Client
 		public GetIndexSettingsDescriptor IncludeDefaults(bool? includedefaults = true) => Qs("include_defaults", includedefaults);
 		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public GetIndexSettingsDescriptor Local(bool? local = true) => Qs("local", local);
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public GetIndexSettingsDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public GetIndexSettingsDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 	}
 
 	///<summary>Descriptor for GetTemplate <para>https://opensearch.org/docs/latest/opensearch/rest-api/cat/cat-templates/</para></summary>
@@ -864,8 +909,13 @@ namespace OpenSearch.Client
 		public GetIndexTemplateDescriptor IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
 		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public GetIndexTemplateDescriptor Local(bool? local = true) => Qs("local", local);
-		///<summary>Explicit operation timeout for connection to master node</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public GetIndexTemplateDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public GetIndexTemplateDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 	}
 
 	///<summary>Descriptor for Open <para>https://opensearch.org/docs/latest/opensearch/rest-api/index-apis/close-index/</para></summary>
@@ -900,8 +950,12 @@ namespace OpenSearch.Client
 		public OpenIndexDescriptor ExpandWildcards(ExpandWildcards? expandwildcards) => Qs("expand_wildcards", expandwildcards);
 		///<summary>Whether specified concrete indices should be ignored when unavailable (missing or closed)</summary>
 		public OpenIndexDescriptor IgnoreUnavailable(bool? ignoreunavailable = true) => Qs("ignore_unavailable", ignoreunavailable);
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public OpenIndexDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public OpenIndexDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Explicit operation timeout</summary>
 		public OpenIndexDescriptor Timeout(Time timeout) => Qs("timeout", timeout);
 		///<summary>Sets the number of active shards to wait for before the operation returns.</summary>
@@ -936,8 +990,12 @@ namespace OpenSearch.Client
 		///<summary>A shortcut into calling Index(Indices.All)</summary>
 		public PutAliasDescriptor AllIndices() => Index(Indices.All);
 		// Request parameters
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public PutAliasDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public PutAliasDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Explicit timestamp for the document</summary>
 		public PutAliasDescriptor Timeout(Time timeout) => Qs("timeout", timeout);
 	}
@@ -976,8 +1034,12 @@ namespace OpenSearch.Client
 		///<summary>Whether a type should be expected in the body of the mappings.</summary>
 		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public PutMappingDescriptor<TDocument> IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public PutMappingDescriptor<TDocument> MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public PutMappingDescriptor<TDocument> ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Explicit operation timeout</summary>
 		public PutMappingDescriptor<TDocument> Timeout(Time timeout) => Qs("timeout", timeout);
 		///<summary>When true, applies mappings only to the write index of an alias</summary>
@@ -1017,8 +1079,12 @@ namespace OpenSearch.Client
 		public UpdateIndexSettingsDescriptor FlatSettings(bool? flatsettings = true) => Qs("flat_settings", flatsettings);
 		///<summary>Whether specified concrete indices should be ignored when unavailable (missing or closed)</summary>
 		public UpdateIndexSettingsDescriptor IgnoreUnavailable(bool? ignoreunavailable = true) => Qs("ignore_unavailable", ignoreunavailable);
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public UpdateIndexSettingsDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public UpdateIndexSettingsDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Whether to update existing settings. If set to `true` existing settings on an index remain unchanged, the default is `false`</summary>
 		public UpdateIndexSettingsDescriptor PreserveExisting(bool? preserveexisting = true) => Qs("preserve_existing", preserveexisting);
 		///<summary>Explicit operation timeout</summary>
@@ -1049,8 +1115,12 @@ namespace OpenSearch.Client
 		///<summary>Whether a type should be returned in the body of the mappings.</summary>
 		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public PutIndexTemplateDescriptor IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public PutIndexTemplateDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public PutIndexTemplateDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 	}
 
 	///<summary>Descriptor for Refresh <para>https://opensearch.org/docs/latest/opensearch/rest-api/document-apis/get-documents/</para></summary>
@@ -1143,8 +1213,12 @@ namespace OpenSearch.Client
 		///<summary>Whether a type should be included in the body of the mappings.</summary>
 		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public RolloverIndexDescriptor IncludeTypeName(bool? includetypename = true) => Qs("include_type_name", includetypename);
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public RolloverIndexDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public RolloverIndexDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Explicit operation timeout</summary>
 		public RolloverIndexDescriptor Timeout(Time timeout) => Qs("timeout", timeout);
 		///<summary>Set the number of active shards to wait for on the newly created rollover index before the operation returns.</summary>
@@ -1212,8 +1286,12 @@ namespace OpenSearch.Client
 		public ShrinkIndexDescriptor Index<TOther>()
 			where TOther : class => Assign(typeof(TOther), (a, v) => a.RouteValues.Required("index", (IndexName)v));
 		// Request parameters
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public ShrinkIndexDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public ShrinkIndexDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Explicit operation timeout</summary>
 		public ShrinkIndexDescriptor Timeout(Time timeout) => Qs("timeout", timeout);
 		///<summary>Set the number of active shards to wait for on the shrunken index before the operation returns.</summary>
@@ -1246,8 +1324,12 @@ namespace OpenSearch.Client
 		public SplitIndexDescriptor Index<TOther>()
 			where TOther : class => Assign(typeof(TOther), (a, v) => a.RouteValues.Required("index", (IndexName)v));
 		// Request parameters
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public SplitIndexDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public SplitIndexDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Explicit operation timeout</summary>
 		public SplitIndexDescriptor Timeout(Time timeout) => Qs("timeout", timeout);
 		///<summary>Set the number of active shards to wait for on the shrunken index before the operation returns.</summary>
@@ -1260,8 +1342,12 @@ namespace OpenSearch.Client
 		internal override ApiUrls ApiUrls => ApiUrlsLookups.IndicesBulkAlias;
 		// values part of the url path
 		// Request parameters
-		///<summary>Specify timeout for connection to master</summary>
+		///<summary>Specify timeout for connection to master node</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0, use <see cref="ClusterManagerTimeout"/> instead</remarks>
 		public BulkAliasDescriptor MasterTimeout(Time mastertimeout) => Qs("master_timeout", mastertimeout);
+		///<summary>Specify timeout for connection to cluster_manager node</summary>
+		///<remarks>Introduced in OpenSearch 2.0 instead of <see cref="MasterTimeout"/></remarks>
+		public BulkAliasDescriptor ClusterManagerTimeout(Time timeout) => Qs("cluster_manager_timeout", timeout);
 		///<summary>Request timeout</summary>
 		public BulkAliasDescriptor Timeout(Time timeout) => Qs("timeout", timeout);
 	}

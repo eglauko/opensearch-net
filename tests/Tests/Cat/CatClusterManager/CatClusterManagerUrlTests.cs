@@ -31,7 +31,7 @@ using OpenSearch.Client;
 using Tests.Framework.EndpointTests;
 using static Tests.Framework.EndpointTests.UrlTester;
 
-namespace Tests.Cat.CatMaster
+namespace Tests.Cat.CatClusterManager
 {
 	public class CatClusterManagerUrlTests : UrlTestsBase
 	{
