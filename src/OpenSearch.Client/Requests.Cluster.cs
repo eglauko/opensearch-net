@@ -198,7 +198,7 @@ namespace OpenSearch.Client
 			set => Q("level", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -283,7 +283,7 @@ namespace OpenSearch.Client
 		internal override ApiUrls ApiUrls => ApiUrlsLookups.ClusterPendingTasks;
 		// values part of the url path
 		// Request parameters
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -544,7 +544,7 @@ namespace OpenSearch.Client
 			set => Q("ignore_unavailable", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");

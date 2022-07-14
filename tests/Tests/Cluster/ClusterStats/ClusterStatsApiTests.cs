@@ -69,7 +69,10 @@ namespace Tests.Cluster.ClusterStats
 		{
 			nodes.Should().NotBeNull();
 			nodes.Count.Should().NotBeNull();
-			nodes.Count.Master.Should().BeGreaterOrEqualTo(1);
+			if (Cluster.ClusterConfiguration.Version < "2.0.0")
+				nodes.Count.Master.Should().BeGreaterOrEqualTo(1);
+			else
+				nodes.Count.ClusterManager.Should().BeGreaterOrEqualTo(1);
 
 			nodes.FileSystem.Should().NotBeNull();
 			nodes.FileSystem.AvailableInBytes.Should().BeGreaterThan(0);

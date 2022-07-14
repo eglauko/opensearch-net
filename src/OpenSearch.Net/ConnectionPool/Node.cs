@@ -45,11 +45,11 @@ namespace OpenSearch.Net
 			Uri = uri;
 			IsAlive = true;
 			HoldsData = true;
-			MasterEligible = true;
+			ClusterManagerEligible = true;
 			IsResurrected = true;
 		}
 
-		public bool ClientNode => !MasterEligible && !HoldsData;
+		public bool ClientNode => !ClusterManagerEligible && !HoldsData;
 
 		/// <summary> When marked dead this reflects the date that the node has to be taken out of rotation till</summary>
 		public DateTime DeadUntil { get; private set; }
@@ -74,10 +74,10 @@ namespace OpenSearch.Net
 		/// <summary> When set this signals the transport that a ping before first usage would be wise</summary>
 		public bool IsResurrected { get; set; }
 
-		/// <summary>Indicates whether this node is master eligible, defaults to true when unknown/unspecified</summary>
-		public bool MasterEligible { get; set; }
+		/// <summary>Indicates whether this node is cluster_manager eligible, defaults to true when unknown/unspecified</summary>
+		public bool ClusterManagerEligible { get; set; }
 
-		public bool MasterOnlyNode => MasterEligible && !HoldsData;
+		public bool ClusterManagerOnlyNode => ClusterManagerEligible && !HoldsData;
 
 		/// <summary>The name of the node, defaults to null when unknown/unspecified</summary>
 		public string Name { get; set; }
@@ -120,7 +120,7 @@ namespace OpenSearch.Net
 				Id = Id,
 				Name = Name,
 				HoldsData = HoldsData,
-				MasterEligible = MasterEligible,
+				ClusterManagerEligible = ClusterManagerEligible,
 				FailedAttempts = FailedAttempts,
 				DeadUntil = DeadUntil,
 				IsAlive = IsAlive,

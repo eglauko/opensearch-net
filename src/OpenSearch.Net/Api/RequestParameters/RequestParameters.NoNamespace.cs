@@ -1920,7 +1920,7 @@ namespace OpenSearch.Net
 			set => Q("ignore_unavailable", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");

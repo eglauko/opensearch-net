@@ -109,6 +109,7 @@ namespace OpenSearch.Client
 		internal static ApiUrls IndicesExists = new ApiUrls(new[]{"{index}"});
 		internal static ApiUrls IndicesAliasExists = new ApiUrls(new[]{"_alias/{name}", "{index}/_alias/{name}"});
 		internal static ApiUrls IndicesTemplateExists = new ApiUrls(new[]{"_template/{name}"});
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		internal static ApiUrls IndicesTypeExists = new ApiUrls(new[]{"{index}/_mapping/{type}"});
 		internal static ApiUrls IndicesFlush = new ApiUrls(new[]{"_flush", "{index}/_flush"});
 		internal static ApiUrls IndicesForceMerge = new ApiUrls(new[]{"_forcemerge", "{index}/_forcemerge"});

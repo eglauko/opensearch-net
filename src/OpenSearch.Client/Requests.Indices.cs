@@ -449,6 +449,7 @@ namespace OpenSearch.Client
 		IndexName ICreateIndexRequest.Index => Self.RouteValues.Get<IndexName>("index");
 		// Request parameters
 		///<summary>Whether a type should be expected in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public bool? IncludeTypeName
 		{
 			get => Q<bool? >("include_type_name");
@@ -746,7 +747,7 @@ namespace OpenSearch.Client
 			set => Q("include_defaults", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -824,7 +825,7 @@ namespace OpenSearch.Client
 			set => Q("ignore_unavailable", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -870,7 +871,7 @@ namespace OpenSearch.Client
 			set => Q("flat_settings", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -894,6 +895,7 @@ namespace OpenSearch.Client
 		}
 	}
 
+	/// <remarks>Deprecated as of OpenSearch 2.0</remarks>
 	[InterfaceDataContract]
 	public partial interface ITypeExistsRequest : IRequest<TypeExistsRequestParameters>
 	{
@@ -911,6 +913,7 @@ namespace OpenSearch.Client
 	}
 
 	///<summary>Request for TypeExists <para>https://opensearch.org/docs/latest/opensearch/rest-api/index-apis/exists/</para></summary>
+	///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 	public partial class TypeExistsRequest : PlainRequestBase<TypeExistsRequestParameters>, ITypeExistsRequest
 	{
 		protected ITypeExistsRequest Self => this;
@@ -958,7 +961,7 @@ namespace OpenSearch.Client
 			set => Q("ignore_unavailable", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -1184,13 +1187,14 @@ namespace OpenSearch.Client
 		}
 
 		///<summary>Whether to add the type name to the response (default: false)</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public bool? IncludeTypeName
 		{
 			get => Q<bool? >("include_type_name");
 			set => Q("include_type_name", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -1289,7 +1293,7 @@ namespace OpenSearch.Client
 			set => Q("ignore_unavailable", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -1375,13 +1379,14 @@ namespace OpenSearch.Client
 		}
 
 		///<summary>Whether a type should be returned in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public bool? IncludeTypeName
 		{
 			get => Q<bool? >("include_type_name");
 			set => Q("include_type_name", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -1444,6 +1449,7 @@ namespace OpenSearch.Client
 		}
 
 		///<summary>Whether to add the type name to the response (default: false)</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public bool? IncludeTypeName
 		{
 			get => Q<bool? >("include_type_name");
@@ -1556,7 +1562,7 @@ namespace OpenSearch.Client
 			set => Q("include_defaults", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -1618,13 +1624,14 @@ namespace OpenSearch.Client
 		}
 
 		///<summary>Whether a type should be returned in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public bool? IncludeTypeName
 		{
 			get => Q<bool? >("include_type_name");
 			set => Q("include_type_name", value);
 		}
 
-		///<summary>Return local information, do not retrieve the state from master node (default: false)</summary>
+		///<summary>Return local information, do not retrieve the state from cluster_manager node (default: false)</summary>
 		public bool? Local
 		{
 			get => Q<bool? >("local");
@@ -1858,6 +1865,7 @@ namespace OpenSearch.Client
 		}
 
 		///<summary>Whether a type should be expected in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public bool? IncludeTypeName
 		{
 			get => Q<bool? >("include_type_name");
@@ -2041,6 +2049,7 @@ namespace OpenSearch.Client
 		}
 
 		///<summary>Whether a type should be returned in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public bool? IncludeTypeName
 		{
 			get => Q<bool? >("include_type_name");
@@ -2213,6 +2222,7 @@ namespace OpenSearch.Client
 		}
 
 		///<summary>Whether a type should be included in the body of the mappings.</summary>
+		///<remarks>Deprecated as of OpenSearch 2.0</remarks>
 		public bool? IncludeTypeName
 		{
 			get => Q<bool? >("include_type_name");

@@ -26,7 +26,6 @@
 */
 
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Threading;
 
@@ -34,15 +33,6 @@ namespace Tests.Configuration
 {
 	public static class TestConfiguration
 	{
-		/*
-		static TestConfiguration()
-		{
-			int c = 0;
-			while (!Debugger.IsAttached && c++ < 20)
-				Thread.Sleep(5000);
-		}
-		//*/
-
 		private static readonly Lazy<TestConfigurationBase> Lazy
 			= new Lazy<TestConfigurationBase>(LoadConfiguration, LazyThreadSafetyMode.ExecutionAndPublication);
 
